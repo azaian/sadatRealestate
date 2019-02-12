@@ -1,0 +1,8 @@
+[25-Jan-2019 17:14:24 UTC] PHP Parse error:  syntax error, unexpected '=' in /home/sadatrealestate/public_html/realestate/vendor/laravel/framework/src/Illuminate/Support/Arr.php on line 388
+[25-Jan-2019 17:15:17 UTC] PHP Parse error:  syntax error, unexpected '=' in /home/sadatrealestate/public_html/realestate/vendor/laravel/framework/src/Illuminate/Support/Arr.php on line 388
+[25-Jan-2019 17:20:03 UTC] PHP Parse error:  syntax error, unexpected '=' in /home/sadatrealestate/public_html/realestate/vendor/laravel/framework/src/Illuminate/Support/Arr.php on line 388
+[25-Jan-2019 17:20:32 UTC] PHP Parse error:  syntax error, unexpected '=' in /home/sadatrealestate/public_html/realestate/vendor/laravel/framework/src/Illuminate/Support/Arr.php on line 388
+[25-Jan-2019 17:20:33 UTC] PHP Parse error:  syntax error, unexpected '=' in /home/sadatrealestate/public_html/realestate/vendor/laravel/framework/src/Illuminate/Support/Arr.php on line 388
+[25-Jan-2019 17:21:49 UTC] PHP Parse error:  syntax error, unexpected '=' in /home/sadatrealestate/public_html/realestate/vendor/laravel/framework/src/Illuminate/Support/Arr.php on line 388
+[29-Jan-2019 09:34:36 UTC] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in /home/sadatrealestate/public_html/realestate/storage/framework/views/944031d29d1b255bd40c7647f12abea8c9a2c0ca.php on line 90
+[29-Jan-2019 09:35:21 UTC] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in /home/sadatrealestate/public_html/realestate/storage/framework/views/944031d29d1b255bd40c7647f12abea8c9a2c0ca.php on line 107
