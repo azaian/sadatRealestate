@@ -14,7 +14,6 @@
                         <li><a href="{{$Dataa['allmainsettings']->facebookurl}}" class="facebook"><i class="icon-facebook-1"></i></a></li>
                         <li><a href="{{$Dataa['allmainsettings']->twitterurl}}" class="twitter"><i class="icon-twitter-1"></i></a></li>
                         <li><a href="{{ $Dataa['allmainsettings']->googleplusurl}}" class="google"><i class="icon-youtube"></i></a></li>
-
                     </ul>
                 </div>
             </div>

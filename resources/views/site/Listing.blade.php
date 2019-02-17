@@ -13,7 +13,7 @@ Home Page
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="uppercase">عقارات</h2>
-                <p class="heading_space"> We are proud to present to you some of the best homes, apartments, offices e.g. across Australia for affordable prices. </p>
+                <p class="heading_space"></p>
             </div>
         </div>
 
@@ -31,7 +31,7 @@ Home Page
                         <h3 class="captlize">
                             <?php echo str_limit($realEstate->title,50)?>
                             <div class="price clearfix">
-                                <span class="tag" style="left:-15px; right:unset; bottom:unset;top:10px; font-size:14px">
+                                <span class="tag available-tag">
                                     @if ($realEstate->available)
                                     متاح
                                     @else
@@ -55,19 +55,26 @@ Home Page
                     </div>
                     <div class="proerty_content">
                         <div class="property_meta">
-                            <span><i class="icon-select-an-objecto-tool"></i>{{ $realEstate->area }}
+                            <span>
+                                {{ $realEstate->area }}
                                 @if ($realEstate->category()->name== 'مزارع')
                                 فدان
                                 @else
                                 متر
-                                @endif</span>
-                                <span><i class="icon-bed" style="display:none"></i>
-                                    @if ($realEstate->available)
+                                @endif
+                                <i class="icon-select-an-objecto-tool"></i>
+                            </span>
+                            <span><i class="icon-bed" style="display:none"></i>
+                                {{-- @if ($realEstate->available)
                                     متاح
                                     @else
                                     تم البيع
-                                    @endif</span>
-                                    <span><i class="icon-safety-shower"></i>{{ $realEstate->views }}</span>
+                                    @endif --}}
+                            </span>
+                            <span>
+                                {{ $realEstate->views }}
+                                <i class="fa fa-eye"></i>
+                            </span>
                         </div>
 
                         <div class="favroute clearfix">
@@ -96,11 +103,44 @@ Home Page
             @endforeach
         </div>
 
-        <div class="row">
-            <div class="col-md-12 text-center">
-                {{ $realEstates->links() }}
+
+        @if (isset($realEstates) && count($realEstates))
+        <div class="row margin_bottom">
+            <div class="col-md-12">
+                <ul class="pager fix-pager">
+                    <?php
+                    $i=$realEstates->currentPage()-2;
+                    $end=$realEstates->currentPage()+2;
+                    if($i <= 0) {
+                      $i=1;
+                      $end=5;
+                    }
+                    ?>
+                    @if ( $i > 1)
+                    <li>
+                        <a href="?page={{ $i-1 }}">
+                            {{ "<<" }}
+                        </a>
+                    </li>
+                    @endif
+                    @for(; $i <= $end&&$i<=$realEstates->lastPage(); $i++)
+                        <li class="@if($i == $realEstates->currentPage()) active @endif">
+                            <a href="?page={{$i}}">
+                                {{$i}}
+                            </a>
+                        </li>
+                        @endfor
+                        @if ( $i-1 < $realEstates->lastPage())
+                            <li>
+                                <a href="?page={{ $i }}">
+                                    {{ ">>" }}
+                                </a>
+                            </li>
+                            @endif
+                </ul>
             </div>
         </div>
+        @endif
         @endif
     </div>
 </section>

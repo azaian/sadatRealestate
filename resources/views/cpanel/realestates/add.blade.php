@@ -120,14 +120,14 @@ active
                 <div class="row mg-b-25">
                     <div class="col-lg">
                         المساحه
-                        <input class="form-control" placeholder="area" type="text" name="area" required>
+                        <input class="form-control" placeholder="area" type="number" min="0" name="area" required>
                     </div>
                 </div>
 
                 <div class="row mg-b-25">
                     <div class="col-lg">
                         السعر
-                        <input class="form-control" placeholder="price" type="text" name="price" required>
+                        <input class="form-control" placeholder="price" min="0" type="number" name="price" required>
                     </div>
                 </div>
 

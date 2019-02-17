@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <p>We are Best in Town With 40 years of Experience.</p>
+                    {{-- <p>We are Best in Town With 40 years of Experience.</p> --}}
                 </div>
 
                 <div class="col-md-8 text-right">
@@ -62,10 +62,11 @@
                         <li>
                             <div class="row">
                                 @if (isset($Dataa['categoryForSale']))
-                                <div class="col-menu col-md-3 pull-right rtl">
-                                    <h5 class="title pull-right">عقارات للبيع</h5>
+                                <div class="col-menu col-md-6 pull-right rtl">
+                                    <div class="row">
+                                        <h5 class="title pull-right">عقارات للبيع</h5>
+                                    </div>
                                     <div class="content">
-                                        <br>
                                         <ul class="menu-col pull-right ">
                                             @foreach ($Dataa['categoryForSale'] as $cat)
                                             <li class="">
@@ -79,10 +80,11 @@
                                 </div>
                                 @endif
                                 @if (isset($Dataa['categoryForRent']))
-                                <div class="col-menu col-md-3 pull-right rtl">
-                                    <h5 class="title pull-right">عقارات للايجار</h5>
+                                <div class="col-menu col-md-6 pull-right rtl">
+                                    <div class="row">
+                                        <h5 class="title pull-right">عقارات للايجار</h5>
+                                    </div>
                                     <div class="content">
-                                        <br>
                                         <ul class="menu-col">
                                             @foreach ($Dataa['categoryForRent'] as $cat)
                                             <li>
@@ -101,7 +103,12 @@
                         </li>
                     </ul>
                 </li>
-
+                @if (isset($farms))
+                <li><a href="{{route('getlinting',['cat_id'=>$farms])}}">مزارع</a></li>
+                @endif
+                @if (isset($factories))
+                <li><a href="{{route('getlinting',['cat_id'=>$factories])}}">مصانع</a></li>
+                @endif
                 <li class="dropdown">
                     <a href="#." class="dropdown-toggle" data-toggle="dropdown">المشروعات </a>
                     <ul class="dropdown-menu">
@@ -121,7 +128,7 @@
                 <li><a href="{{ route('getcontactuspage') }}">تواصل معنا </a></li>
 
             </ul>
-            <a class="btn-blue border_radius" href="{{ route('addrealestate')}}" style="float: left;position: relative;top: 17px;">اضف عقارك</a>
+            <a class="btn-blue border_radius" href="{{ route('addrealestate')}}" style="float: left;position: relative;top: 17px; padding:14px 15px;">اضف عقارك</a>
         </div>
         </div>
     </nav>

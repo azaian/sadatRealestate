@@ -31,7 +31,7 @@
             <div class="col-md-4 col-sm-6 col-xs-12 heading_space pull-right">
                 <div class="sim-lar-p">
                     <div class="image bottom20">
-                        <img style="height:100%;width:100%;" src="{{url('assets/img/new',$onenew->image)}}" alt="Agents">
+                        <img style="height:195px;width:100%;" src="{{url('assets/img/new',$onenew->image)}}" alt="Agents">
                     </div>
                     <div class="sim-lar-text">
                         <h3 class="bottom10"><a href="{{ route('getnewpage',$onenew->id) }}">{{ $onenew->title }}</a></h3>
@@ -48,16 +48,36 @@
             @if (isset($allactivenews) && count($allactivenews))
             <div class="row margin_bottom">
                 <div class="col-md-12">
-                    <ul class="pager">
-                        @for($i = 1; $i <= $allactivenews->lastPage(); $i++)
+                    <ul class="pager fix-pager">
+                        <?php
+                        $i=$allactivenews->currentPage()-2;
+                        $end=$allactivenews->currentPage()+2;
+                        if($i <= 0) {
+                          $i=1;
+                          $end=5;
+                        }
+                        ?>
+                        @if ( $i > 1)
+                        <li>
+                            <a href="?page={{ $i-1 }}">
+                                {{ "<<" }}
+                            </a>
+                        </li>
+                        @endif
+                        @for(; $i <= $end&&$i<=$allactivenews->lastPage(); $i++)
                             <li class="@if($i == $allactivenews->currentPage()) active @endif">
                                 <a href="?page={{$i}}">
                                     {{$i}}
                                 </a>
                             </li>
                             @endfor
-
-
+                            @if ( $i-1 < $allactivenews->lastPage())
+                                <li>
+                                    <a href="?page={{ $i }}">
+                                        {{ ">>" }}
+                                    </a>
+                                </li>
+                                @endif
                     </ul>
                 </div>
             </div>

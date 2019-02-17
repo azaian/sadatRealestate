@@ -15,7 +15,7 @@ Route::get('/', 'SiteControllers\HomeController@index')->name('homePage');
 Route::get('/realestate/{id}', 'SiteControllers\PagesController@showRealEstate')->name('realEstate');
 Route::post('/listing', 'SiteControllers\PagesController@searchResult')->name('listing');
 Route::get('/listing', 'SiteControllers\HomeController@index');
-Route::get('/listing/{cat_id}/{type}/', 'SiteControllers\PagesController@searchResult')->name('getlinting');
+Route::get('/listing/{cat_id}/{type?}/', 'SiteControllers\PagesController@searchResult')->name('getlinting');
 Route::get('/addrealestate', 'SiteControllers\PagesController@addrealestate')->name('addrealestate');
 Route::post('/storerealestate', 'SiteControllers\PagesController@storerealestate')->name('storerealestate');
 

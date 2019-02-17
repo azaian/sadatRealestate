@@ -33,6 +33,8 @@ class PagesController extends Controller
         // }
         return view('site.RealEstate', compact('realEstate', 'lots'));
     }
+
+    
     public function searchResult(Request $request)
     {
         $searchCondtions=$this->setSearchConditions($request);
@@ -107,10 +109,13 @@ class PagesController extends Controller
 
     private function setSearchConditions($request)
     {
-        $array = ['type','cat_id','price','area','district'];
+        $array = ['type','cat_id','price','area','district','id'];
 
         if (isset($request->type)) {
             $searchCondtions[]=['type',$request->type];
+        }
+        if (isset($request->id)) {
+            $searchCondtions[]=['id',$request->id];
         }
         if (isset($request->cat_id)) {
             $searchCondtions[]=['cat_id',$request->cat_id];

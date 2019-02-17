@@ -152,7 +152,7 @@ active
 
                 <div class="row mg-b-25">
                     <div class="col-lg">
-                        <input class="form-control" placeholder="area" type="text" name="area" @if(isset($realEstate->area))
+                        <input class="form-control" placeholder="area" type="number" min="0" name="area" @if(isset($realEstate->area))
                         value="{{ $realEstate->area }}"
                         @endif
                         required>
@@ -161,7 +161,7 @@ active
 
                 <div class="row mg-b-25">
                     <div class="col-lg">
-                        <input class="form-control" placeholder="price" type="text" name="price" @if(isset($realEstate->price))
+                        <input class="form-control" placeholder="price" type="number" min="0" name="price" @if(isset($realEstate->price))
                         value="{{ $realEstate->price }}"
                         @endif
                         required>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\SiteControllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Realestate;
+use App\Realestatecategory;
 use App\Slider;
 use App\News;
 use App\Testinomial;
@@ -16,11 +17,13 @@ class HomeController extends Controller
     {
         $slides = Slider::all();
         $realEstates = Realestate::latest()->where('approvement', 1)->paginate(9);
+        $lots = Realestate::latest()->where(['approvement'=> 1, 'catch'=>1])->paginate(9);
+        $farms = Realestatecategory::where('name', 'مزارع')->first();
+        $factories = Realestatecategory::where('name', 'مصانع')->first();
         $news = News::latest()->take(5)->get();
         $testinomials = Testinomial::all();
         $advices=Advice::whereActive(1)->paginate(6);
 
-        // print_r($news[0]->title);
-        return view('site.homePage', compact('slides', 'realEstates', 'news', 'testinomials', 'advices'));
+        return view('site.homePage', compact('slides', 'realEstates', 'news', 'testinomials', 'advices', 'farms', 'factories', 'lots'));
     }
 }

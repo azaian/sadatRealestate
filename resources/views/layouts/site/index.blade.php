@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,56 +23,58 @@
     <link rel="stylesheet" type="text/css" href="{{url('site/css/range-Slider.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{url('site/css/search.css')}}">
     <link rel="icon" href="{{url('site/img/icon.png')}}">
-    <link rel="stylesheet" type="text/css" href="{{url('site/css/fontawesome.min.css')}}">
+    {{-- <link rel="stylesheet" type="text/css" href="{{url('site/css/font-awesome.min.css')}}"> --}}
 
 
 
 </head>
+
 <body>
-  <!--Loader-->
-  <div class="loader">
-    <div class="span">
-      <div class="location_indicator"></div>
+    <!--Loader-->
+    <div class="loader">
+        <div class="span">
+            <div class="location_indicator"></div>
+        </div>
     </div>
-  </div>
-   <!--Loader-->
+    <!--Loader-->
 
-@include('layouts.site.header')
-
-
-@yield('pagecontent')
+    @include('layouts.site.header')
 
 
-@include('layouts.site.footer')
-
-   <script src="{{url('site/js/jquery-2.1.4.js')}}"></script>
-   <script src="{{url('site/js/bootstrap.min.js')}}"></script>
-   <script src="{{url('site/js/bootsnav.js')}}"></script>
-   <script src="{{url('site/js/jquery.parallax-1.1.3.js')}}"></script>
-   <script src="{{url('site/js/jquery.appear.js')}}"></script>
-   <script src="{{url('site/js/jquery-countTo.js')}}"></script>
-   <script src="{{url('site/js/masonry.pkgd.min.js')}}"></script>
-   <script src="{{url('site/js/range-Slider.min.js')}}"></script>
-   <script src="{{url('site/js/owl.carousel.min.js')}}"></script>
-   <script src="{{url('site/js/jquery.cubeportfolio.min.js')}}"></script>
-   <script src="{{url('site/js/selectbox-0.2.min.js')}}"></script>
-   <script src="{{url('site/js/zelect.js')}}"></script>
-   <script src="{{url('site/js/jquery.themepunch.tools.min.js')}}"></script>
-   <script src="{{url('site/js/jquery.themepunch.revolution.min.js')}}"></script>
-   <script src="{{url('site/js/revolution.extension.navigation.min.js')}}"></script>
-   <script src="{{url('site/js/revolution.extension.layeranimation.min.js')}}"></script>
-   <script src="{{url('site/js/revolution.extension.slideanims.min.js')}}"></script>
-   <script src="{{url('site/js/revolution.extension.parallax.min.js')}}"></script>
-   <script src="{{url('site/js/revolution.extension.video.min.js')}}"></script>
-   <script src="{{url('site/js/neary-by-place.js')}}"></script>
-   <script src="http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
-   <script src="{{url('site/js/google-map.js')}}"></script>
-   <script src="{{url('site/js/custom.js')}}"></script>
-   <script src="{{url('site/js/autocomplete.js')}}"></script>
-   <script src="{{url('site/js/functions.js')}}"></script>
-   <script src="{{url('site/js/fontawesome.min.js')}}"></script>
+    @yield('pagecontent')
 
 
-@yield('extraJS')
+    @include('layouts.site.footer')
+
+    <script src="{{url('site/js/jquery-2.1.4.js')}}"></script>
+    <script src="{{url('site/js/bootstrap.min.js')}}"></script>
+    <script src="{{url('site/js/bootsnav.js')}}"></script>
+    <script src="{{url('site/js/jquery.parallax-1.1.3.js')}}"></script>
+    <script src="{{url('site/js/jquery.appear.js')}}"></script>
+    <script src="{{url('site/js/jquery-countTo.js')}}"></script>
+    <script src="{{url('site/js/masonry.pkgd.min.js')}}"></script>
+    <script src="{{url('site/js/range-Slider.min.js')}}"></script>
+    <script src="{{url('site/js/owl.carousel.min.js')}}"></script>
+    <script src="{{url('site/js/jquery.cubeportfolio.min.js')}}"></script>
+    <script src="{{url('site/js/selectbox-0.2.min.js')}}"></script>
+    <script src="{{url('site/js/zelect.js')}}"></script>
+    <script src="{{url('site/js/jquery.themepunch.tools.min.js')}}"></script>
+    <script src="{{url('site/js/jquery.themepunch.revolution.min.js')}}"></script>
+    <script src="{{url('site/js/revolution.extension.navigation.min.js')}}"></script>
+    <script src="{{url('site/js/revolution.extension.layeranimation.min.js')}}"></script>
+    <script src="{{url('site/js/revolution.extension.slideanims.min.js')}}"></script>
+    <script src="{{url('site/js/revolution.extension.parallax.min.js')}}"></script>
+    <script src="{{url('site/js/revolution.extension.video.min.js')}}"></script>
+    <script src="{{url('site/js/neary-by-place.js')}}"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+    <script src="{{url('site/js/google-map.js')}}"></script>
+    <script src="{{url('site/js/custom.js')}}"></script>
+    <script src="{{url('site/js/autocomplete.js')}}"></script>
+    <script src="{{url('site/js/functions.js')}}"></script>
+    <script src="{{url('site/js/fontawesome.min.js')}}"></script>
+
+
+    @yield('extraJS')
 </body>
+
 </html>
