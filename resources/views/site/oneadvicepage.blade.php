@@ -2,6 +2,26 @@
 @section('title')
 {{ $advice->title }}
 @endsection
+@section('custommetatags')
+    <meta property="og:image" content="{{ url('assets/img/advice',$advice->image) }}" />
+
+    <!-- Place this data between the <head> tags of your website -->
+    <meta name="description" content="content" />
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="{{$advice->title}}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="http://sadatrealestate.com/realestate/public/getadvicepage/{{$advice->id}}" />
+    <meta property="og:image" content="{{ url('assets/img/advice',$advice->image) }}" />
+    <meta name="twitter:image" content="{{ url('assets/img/advice',$advice->image) }}">
+
+
+    <meta property="og:description" content="content" />
+
+@endsection
 
 @section('pagecontent')
 
@@ -38,6 +58,32 @@
                                 <span><i class="icon-eye"></i> {{ $advice->view }}</span>
                             </div>
                             <p>{!! htmlspecialchars_decode($advice->description) !!}.</p>
+                            
+                            <div class="social-networks">
+                                <div class="social-icons-2">
+                                  <span class="share-it">مشاركه النصيحه</span>
+                                  <span><a onclick="share(`http://sadatrealestate.com/realestate/public/getadvicepage/{{$advice->id}}`)"><i class="fa fa-facebook" aria-hidden="true"></i> </a></span>
+                                 
+                                  
+                                </div>
+                              </div>
+                            
+                            
+                            <a onclick="share(`http://sadatrealestate.com/realestate/public/getadvicepage/{{$advice->id}}`)">share</a>
+
+                            <script>
+                                function share(url) {
+                                    FB.ui({
+                                        method: 'share',
+                                        hashtag: '#thisisahashtag',
+                                        href: url,
+                                        display:'popup'
+
+
+                                        }, function(response){}
+                                    );
+                                }
+                            </script>
                         </div>
                     </div>
 

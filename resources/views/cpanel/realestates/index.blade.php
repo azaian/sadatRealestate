@@ -116,6 +116,7 @@ active
                     </tbody>
                 </table>
             </div><!-- table-wrapper -->
+            {{$realEstates->links()}}
         </div><!-- br-section-wrapper -->
     </div><!-- br-pagebody -->
 

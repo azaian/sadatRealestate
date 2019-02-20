@@ -2,7 +2,26 @@
 @section('title')
 Real Estate
 @endsection
+@section('custommetatags')
+    <meta property="og:image" content="{{ url('assets/img/realestate',$realEstate->main_pic) }}" />
 
+    <!-- Place this data between the <head> tags of your website -->
+    <meta name="description" content="content" />
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="{{$realEstate->title}}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="http://sadatrealestate.com/realestate/public/realestate/{{$realEstate->id}}" />
+    <meta property="og:image" content="{{ url('assets/img/realestate',$realEstate->main_pic) }}" />
+    <meta name="twitter:image" content="{{ url('assets/img/realestate',$realEstate->main_pic) }}">
+
+
+    <meta property="og:description" content="content" />
+
+@endsection
 @section('pagecontent')
 
 <!-- Property Detail Start -->
@@ -161,7 +180,31 @@ Real Estate
                     </div>
                 </div>
 
+                            
+                            
             </div>
+            <div class="social-networks">
+                                <div class="social-icons-2">
+                                  <span class="share-it">مشاركه العقار</span>
+                                  <span><a onclick="share(`http://sadatrealestate.com/realestate/public/realestate/{{$realEstate->id}}`)"><i class="fa fa-facebook" aria-hidden="true"></i> </a></span>
+                                 
+                                  
+                                </div>
+                              </div>
+                            
+                     <script>
+                                function share(url) {
+                                    FB.ui({
+                                        method: 'share',
+                                        hashtag: '#thisisahashtag',
+                                        href: url,
+                                        display:'popup'
+
+
+                                        }, function(response){}
+                                    );
+                                }
+                            </script>
             <aside class="col-md-4 col-xs-12 rtl">
                 <div class="property-query-area clearfix">
                     <div class="col-md-12">

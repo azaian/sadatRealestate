@@ -2,6 +2,26 @@
 @section('title')
 {{ $onenew->title }}
 @endsection
+@section('custommetatags')
+    <meta property="og:image" content="{{ url('assets/img/new',$onenew->image) }}" />
+
+    <!-- Place this data between the <head> tags of your website -->
+    <meta name="description" content="content" />
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="{{$onenew->title}}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="http://sadatrealestate.com/realestate/public/getnewpage/{{$onenew->id}}" />
+    <meta property="og:image" content="{{ url('assets/img/new',$onenew->image) }}" />
+    <meta name="twitter:image" content="{{ url('assets/img/new',$onenew->image) }}">
+
+
+    <meta property="og:description" content="content" />
+
+@endsection
 @section('pagecontent')
 
 <!-- Page Banner Start-->
@@ -38,7 +58,30 @@
                             </div>
                             <p>{!! $onenew->description !!}.</p>
                         </div>
+                         <div class="social-networks">
+                                <div class="social-icons-2">
+                                  <span class="share-it">مشاركه الخبر</span>
+                                  <span><a onclick="share(`http://sadatrealestate.com/realestate/public/getnewpage/{{$onenew->id}}`)"><i class="fa fa-facebook" aria-hidden="true"></i> </a></span>
+                                 
+                                  
+                                </div>
+                              </div>
+                            
+                     <script>
+                                function share(url) {
+                                    FB.ui({
+                                        method: 'share',
+                                        hashtag: '#thisisahashtag',
+                                        href: url,
+                                        display:'popup'
+
+
+                                        }, function(response){}
+                                    );
+                                }
+                            </script>
                     </div>
+                   
 
                 </div>
             </div>
