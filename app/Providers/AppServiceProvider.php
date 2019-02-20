@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
         $categories=Realestatecategory::all();
         $categoryForSale=Realestate::where('type', 'sale')->selectRaw('cat_id')->groupBy('cat_id')->get();
         $categoryForRent=Realestate::where('type', 'rent')->selectRaw('cat_id')->groupBy('cat_id')->get();
-        $news = News::latest()->take(5)->get();
+        $news = News::latest()->take(10)->get();
 
         $Data['allmainsettings']=$allmainsettings;
         $Data['categories']=$categories;
