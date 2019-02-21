@@ -18,14 +18,12 @@ class HomeController extends Controller
         $slides = Slider::all();
         $realEstates = Realestate::latest()->where('approvement', 1)->paginate(9);
         $lots = Realestate::latest()->where(['approvement'=> 1, 'catch'=>1])->paginate(9);
-        $farms = Realestatecategory::where('name', 'مزارع')->first();
-        $factories = Realestatecategory::where('name', 'مصانع')->first();
         $mostseen = Realestate::orderBy('views', 'desc')->where('approvement', 1)->paginate(9);
         $news = News::latest()->take(5)->get();
         $testinomials = Testinomial::all();
         $advices=Advice::whereActive(1)->paginate(6);
 
 
-        return view('site.homePage', compact('slides', 'realEstates', 'news', 'testinomials', 'advices', 'farms', 'factories', 'lots', 'mostseen'));
+        return view('site.homePage', compact('slides', 'realEstates', 'news', 'testinomials', 'advices', 'lots', 'mostseen'));
     }
 }

@@ -43,7 +43,7 @@ Contact us
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <textarea required class="form-control" placeholder="الرساله" name="message"></textarea>
+                                <textarea required class="form-control" placeholder="الرساله" name="message" rows="5"></textarea>
                             </div>
                         </div>
                         <div class="col-sm-12 row">

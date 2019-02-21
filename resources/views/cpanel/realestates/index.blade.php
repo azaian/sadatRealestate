@@ -49,7 +49,7 @@ active
                             <th class="wd-5p">الفئه</th>
                             <th class="wd-5p">رقم الهاتف</th>
                             <th class="wd-5p">ملاحظات</th>
-                            <th class="wd-5p" style="width:13%"></th>
+                            <th class="wd-5p" style="width:20%"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -66,7 +66,6 @@ active
                             <td>{{$realEstate->category()->name}}</td>
                             <td>{{$realEstate->phone_no}}</td>
                             <td>{{$realEstate->adminnote}}</td>
-
                             <td>
                                 <a href="{{ route('realestates.edit',$realEstate->id) }}" class="btn btn-primary btn-icon rounded-circle">
                                     <div><i class="fa fa-edit"></i></div>
@@ -101,6 +100,13 @@ active
                                     <div><i class="fa fa-star"></i></div>
                                 </a>
                                 @endif
+
+                                @if (!empty($realEstate->messages()->toArray()))
+                                <a href="{{ route('contactus.show',$realEstate->id) }}" class="btn btn-success btn-icon rounded-circle">
+                                    <div><i class="fa fa-envelope "></i></div>
+                                </a>
+                                @endif
+
 
                                 <form class="pull-left" method="post" action="{{ route('realestates.destroy',$realEstate->id) }}">
                                     @csrf

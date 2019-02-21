@@ -69,6 +69,9 @@
                                     <div class="content">
                                         <ul class="menu-col pull-right ">
                                             @foreach ($Dataa['categoryForSale'] as $cat)
+                                            @if ($cat->category()->name == 'مزارع' || $cat->category()->name =='مصانع' )
+                                            @continue
+                                            @endif
                                             <li class="">
                                                 <a href="{{route('getlinting',['cat_id'=>$cat->cat_id,'type'=>'sale'])}}">
                                                     {{$cat->category()->name}}
@@ -87,6 +90,9 @@
                                     <div class="content">
                                         <ul class="menu-col">
                                             @foreach ($Dataa['categoryForRent'] as $cat)
+                                            @if ($cat->category()->name == 'مزارع' || $cat->category()->name =='مصانع' )
+                                            @continue
+                                            @endif
                                             <li>
                                                 <a href="{{route('getlinting',['cat_id'=>$cat->cat_id,'type'=>'rent'])}}">
                                                     {{$cat->category()->name}}
@@ -103,11 +109,11 @@
                         </li>
                     </ul>
                 </li>
-                @if (isset($farms))
-                <li><a href="{{route('getlinting',['cat_id'=>$farms])}}">مزارع</a></li>
+                @if (isset($Dataa['farms']))
+                <li><a href="{{route('getlinting',['cat_id'=>$Dataa['farms']->id])}}">مزارع</a></li>
                 @endif
-                @if (isset($factories))
-                <li><a href="{{route('getlinting',['cat_id'=>$factories])}}">مصانع</a></li>
+                @if (isset($Dataa['factories']))
+                <li><a href="{{route('getlinting',['cat_id'=>$Dataa['factories']->id])}}">مصانع</a></li>
                 @endif
                 <li class="dropdown">
                     <a href="#." class="dropdown-toggle" data-toggle="dropdown">المشروعات </a>

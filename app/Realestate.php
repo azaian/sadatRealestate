@@ -16,7 +16,7 @@ class Realestate extends Model
     {
         return $this->hasMany('App\Rsextradata', 'rs_id')->get();
     }
-    
+
 
     public function extraImages()
     {
@@ -30,5 +30,10 @@ class Realestate extends Model
     public function district()
     {
         return $this->hasOne('App\District', 'id', 'district')->first();
+    }
+
+    public function messages()
+    {
+        return $this->hasMany('App\Contactus', 'rs_id')->get();
     }
 }

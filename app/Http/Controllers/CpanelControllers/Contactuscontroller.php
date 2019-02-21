@@ -5,6 +5,7 @@ namespace App\Http\Controllers\CpanelControllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Contactus;
+
 class Contactuscontroller extends Controller
 {
     /**
@@ -14,9 +15,9 @@ class Contactuscontroller extends Controller
      */
     public function index()
     {
-    $allContactusmessages=Contactus::latest()->paginate(10);
-    // return $allContactusmessages;
-    return view('cpanel.contactus.index',compact('allContactusmessages'));
+        $allContactusmessages=Contactus::latest()->whereRsId(-1)->paginate(10);
+        // return $allContactusmessages;
+        return view('cpanel.contactus.index', compact('allContactusmessages'));
     }
 
     /**
@@ -48,7 +49,8 @@ class Contactuscontroller extends Controller
      */
     public function show($id)
     {
-        //
+        $allContactusmessages=Contactus::latest()->whereRsId($id)->paginate(10);
+        return view('cpanel.contactus.index', compact('allContactusmessages'));
     }
 
     /**
@@ -86,10 +88,8 @@ class Contactuscontroller extends Controller
     }
     public function delete($id)
     {
-
         $message=Contactus::find($id);
         $message->delete();
         return redirect()->back()->with('delete', 'تم مسح العنصر بنجاح');
-
     }
 }

@@ -3,23 +3,23 @@
 Real Estate
 @endsection
 @section('custommetatags')
-    <meta property="og:image" content="{{ url('assets/img/realestate',$realEstate->main_pic) }}" />
+<meta property="og:image" content="{{ url('assets/img/realestate',$realEstate->main_pic) }}" />
 
-    <!-- Place this data between the <head> tags of your website -->
-    <meta name="description" content="content" />
+<!-- Place this data between the <head> tags of your website -->
+<meta name="description" content="content" />
 
-    <!-- Twitter Card data -->
-    <meta name="twitter:card" value="summary">
+<!-- Twitter Card data -->
+<meta name="twitter:card" value="summary">
 
-    <!-- Open Graph data -->
-    <meta property="og:title" content="{{$realEstate->title}}" />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="http://sadatrealestate.com/realestate/public/realestate/{{$realEstate->id}}" />
-    <meta property="og:image" content="{{ url('assets/img/realestate',$realEstate->main_pic) }}" />
-    <meta name="twitter:image" content="{{ url('assets/img/realestate',$realEstate->main_pic) }}">
+<!-- Open Graph data -->
+<meta property="og:title" content="{{$realEstate->title}}" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://sadatrealestate.com/realestate/public/realestate/{{$realEstate->id}}" />
+<meta property="og:image" content="{{ url('assets/img/realestate',$realEstate->main_pic) }}" />
+<meta name="twitter:image" content="{{ url('assets/img/realestate',$realEstate->main_pic) }}">
 
 
-    <meta property="og:description" content="content" />
+<meta property="og:description" content="content" />
 
 @endsection
 @section('pagecontent')
@@ -30,7 +30,10 @@ Real Estate
         <div class="row">
             <div class="col-md-8 listing1 property-details pull-right">
                 <h2 class="text-uppercase rtl">{{ $realEstate->title }}</h2>
-                <p class="bottom30"></p>
+                <p class="bottom30 top10 rtl">رقم العقار : {{ $realEstate->id }}
+                    <br>عدد المشاهدات : {{ $realEstate->views }}
+                    <br> افض الى المفضله: <a href="#" id="addfav"><i class="icon-like"></i></a>
+                </p>
                 <div id="property-d-1" class="owl-carousel ">
                     <div class="item"><img src="{{ url('assets/img/realestate/'.$realEstate->main_pic) }}" alt="image" /></div>
                     @if ( $realEstate->extraImages() !== NULL && count( $realEstate->extraImages() ) > 0 )
@@ -59,9 +62,10 @@ Real Estate
                 <div class="text-it-p bottom40 rtl">
                     <p>{{ $realEstate->details }}</p>
                 </div>
-                <h2 class="text-uppercase bottom20 rtl">ملخص التفاصيل</h2>
                 <div class="row property-d-table bottom40 rtl">
-                    <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="col-md-5 col-sm-5 col-xs-12 pull-right">
+                        <h2 class="text-uppercase bottom20 rtl">ملخص التفاصيل</h2>
+
                         <table class="table table-striped table-responsive">
                             <tbody>
                                 <tr>
@@ -99,13 +103,6 @@ Real Estate
                                         للبيع
                                         @endif</td>
                                 </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <table class="table table-striped table-responsive">
-                            <tbody>
-
                                 <tr>
                                     <td><b>الحاله</b></td>
                                     <td class="text-right">
@@ -142,9 +139,74 @@ Real Estate
                                 </tr>
                                 @endforeach
                                 @endif
-
                             </tbody>
                         </table>
+                    </div>
+                    <div class="col-md-7 col-sm-7 col-xs-12">
+                        <h2 class="text-uppercase bottom20 rtl">تواصل معنا</h2>
+                        <div class="agent_wrap bottom15" style="border:#936e55 3px solid;border-radius:10px;">
+                            <table class="agent_contact table">
+                                <tbody>
+                                    @php
+                                    $i=0;
+                                    @endphp
+                                    @if (isset($Dataa['allmainsettings']))
+                                    @foreach (explode("/",$Dataa['allmainsettings']->mobilenumber) as $value)
+                                    @if ($i++>=2)
+                                    @break
+                                    @endif
+                                    <tr class="bottom10">
+                                        <td><strong>الهاتف:</strong></td>
+                                        <td class="text-right">
+                                            {{ $value }}
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    @endif
+                                    @if (isset($Dataa['allmainsettings']->email))
+                                    <tr>
+                                        <td><strong>الايميل:</strong></td>
+                                        <td class="text-right">
+                                            <a href="mailto:{{ $Dataa['allmainsettings']->email }}">
+                                                {{ $Dataa['allmainsettings']->email }}
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    @endif
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <form class="callus" method="post" action="{{ route('sendnewpost') }}">
+                            @csrf
+                            <div class="row">
+                                <div class="col-sm-12 pull-right">
+                                    <div class="form-group">
+                                        <input type="text" name="name" class="form-control" placeholder="الاسم" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="tel" name="mobilenumber" class="form-control" placeholder="رقم الهاتف" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" name="email" class="form-control" placeholder="الايميل" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea class="form-control" name="message" placeholder="الرساله" required></textarea>
+                                    </div>
+                                    <input type="hidden" name="rs_id" value="{{$realEstate->id }}">
+                                </div>
+                                <div class="col-sm-6">
+
+                                </div>
+                                <div class="col-sm-12 row">
+                                    <div class="row">
+                                        <div class="col-sm-3 pull-right">
+                                            <input type="submit" style="width:unset;" class="btn-blue uppercase border_radius" value="ارسال">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
@@ -180,31 +242,10 @@ Real Estate
                     </div>
                 </div>
 
-                            
-                            
+
+
             </div>
-            <div class="social-networks">
-                                <div class="social-icons-2">
-                                  <span class="share-it">مشاركه العقار</span>
-                                  <span><a onclick="share(`http://sadatrealestate.com/realestate/public/realestate/{{$realEstate->id}}`)"><i class="fa fa-facebook" aria-hidden="true"></i> </a></span>
-                                 
-                                  
-                                </div>
-                              </div>
-                            
-                     <script>
-                                function share(url) {
-                                    FB.ui({
-                                        method: 'share',
-                                        hashtag: '#thisisahashtag',
-                                        href: url,
-                                        display:'popup'
 
-
-                                        }, function(response){}
-                                    );
-                                }
-                            </script>
             <aside class="col-md-4 col-xs-12 rtl">
                 <div class="property-query-area clearfix">
                     <div class="col-md-12">
@@ -245,8 +286,8 @@ Real Estate
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="single-query form-group">
-                                        اقل مساحه
-                                        <input type="number" class="keyword-input" name="area[0]" placeholder="اقل مساحه">
+                                        اعلى سعر
+                                        <input type="number" class="keyword-input" name="price[1]" placeholder="اعلى سعر">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -258,22 +299,7 @@ Real Estate
                             </div>
                         </div>
 
-                        <div class="col-sm-12">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="single-query form-group">
-                                        اقل سعر
-                                        <input type="number" class="keyword-input" name="price[0]" placeholder="اقل سعر">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="single-query form-group">
-                                        اعلى سعر
-                                        <input type="number" class="keyword-input" name="price[1]" placeholder="اعلى سعر">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
 
                         <div class="col-sm-12 form-group">
                             <button type="submit" class="btn-blue border_radius">بحث</button>
@@ -299,7 +325,7 @@ Real Estate
                                 <a href="{{ url('realestate/'.$lot->id) }}">{{ $lot->title }}</a>
                             </h4>
                             <p class="bottom15"></p>
-                            <a href="{{ url('realestate/'.$lot->id) }}">{{ $lot->price }}</a>
+                            <a href="{{ url('realestate/'.$lot->id) }}">مشاهده</a>
                         </div>
                     </div>
                 </div>
@@ -309,6 +335,25 @@ Real Estate
 
             </aside>
         </div>
+        <div class="social-networks">
+            <div class="social-icons-2">
+                <span class="share-it">مشاركه العقار</span>
+                <span><a onclick="share(`http://sadatrealestate.com/realestate/public/realestate/{{$realEstate->id}}`)"><i class="fa fa-facebook" aria-hidden="true"></i> </a></span>
+
+
+            </div>
+        </div>
+
+        <script>
+            function share(url) {
+                FB.ui({
+                    method: 'share',
+                    hashtag: '#thisisahashtag',
+                    href: url,
+                    display: 'popup'
+                }, function(response) {});
+            }
+        </script>
     </div>
 </section>
 <!-- Property Detail End -->
@@ -318,6 +363,17 @@ Real Estate
 
 @section('extraJS')
 {{-- get extra fields and district --}}
+<script type="text/javascript">
+    $("#addfav").click(function() {
+
+        if (!!Cookies.get("rs_id")) {
+            var cook = Cookies.get("rs_id").concat("/<?php echo $realEstate->id ?>");
+            Cookies.set('rs_id', cook);
+        }
+        Cookies.set('rs_id', <?php echo $realEstate->id ?>);
+        alert("added");
+    });
+</script>
 
 <script>
     $(".cat_id").change(function() {

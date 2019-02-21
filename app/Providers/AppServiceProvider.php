@@ -26,12 +26,16 @@ class AppServiceProvider extends ServiceProvider
         $categories=Realestatecategory::all();
         $categoryForSale=Realestate::where('type', 'sale')->selectRaw('cat_id')->groupBy('cat_id')->get();
         $categoryForRent=Realestate::where('type', 'rent')->selectRaw('cat_id')->groupBy('cat_id')->get();
+        $farms = Realestatecategory::where('name', 'مزارع')->first();
+        $factories = Realestatecategory::where('name', 'مصانع')->first();
         $news = News::latest()->take(10)->get();
 
         $Data['allmainsettings']=$allmainsettings;
         $Data['categories']=$categories;
         $Data['categoryForSale']=$categoryForSale;
         $Data['categoryForRent']=$categoryForRent;
+        $Data['factories']=$factories;
+        $Data['farms']=$farms;
         $Data['news']=$news;
 
         $allprojectscategory=Projectcategory::whereActive(1)->get();
