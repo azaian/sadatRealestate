@@ -302,13 +302,14 @@ Real Estate
     @endforeach
     @endif --}}
 
+
+    @if ($lots !== NULL && count($lots)>0)
     <div class="row clearfix">
         <div class="col-md-12">
             <h3 class="margin40 bottom20 rtl">عقارات لقطه</h3>
         </div>
         <div class="col-md-12">
             <div id="agent-2-slider" class="owl-carousel">
-                @if ($lots !== NULL && count($lots)>0)
                 @foreach ($lots as $lot)
                 <div class="item">
                     <div class="property_item heading_space">
@@ -352,10 +353,11 @@ Real Estate
                     </div>
                 </div>
                 @endforeach
-                @endif
             </div>
         </div>
     </div>
+    @endif
+
 
 
 
