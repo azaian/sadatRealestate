@@ -124,7 +124,6 @@ Home Page
                         <div class="favroute clearfix">
                             <p class="pull-md-right">{{ $realEstate->price }}
                                 @if (isset($realEstate))
-
                                 @if ($realEstate->category()->name== 'مزارع')
                                 جنيه للفدان
                                 @else
@@ -214,14 +213,16 @@ Home Page
                 @foreach ($lots as $lot)
                 <div class="item feature_item">
                     <div class="image">
+
+
                         <a href="{{ url('realestate/'.$lot->id) }}">
                             <img src="{{ url('assets/img/realestate/'.$lot->main_pic)}}" alt="Featured Property" style="width:364px; height:254px;">
                         </a>
                         <span class="price default_clr">
-                            @if ($lot->available)
-                            متاح
+                            @if ($lot->type == 'sale')
+                            للبيع
                             @else
-                            تم البيع
+                            للايجار
                             @endif
                         </span>
                     </div>
@@ -301,10 +302,10 @@ Home Page
                             <img src="{{ url('assets/img/realestate/'.$mseen->main_pic)}}" alt="Featured Property" style="width:364px; height:254px;">
                         </a>
                         <span class="price default_clr">
-                            @if ($mseen->available)
-                            متاح
+                            @if ($lot->type == 'sale')
+                            للبيع
                             @else
-                            تم البيع
+                            للايجار
                             @endif
                         </span>
                     </div>

@@ -48,7 +48,7 @@
 
 @font-face {
     font-family: 'robotomedium';
-    src: url('../fonts/roboto-medium-webfont.woff2') format('woff2'),
+    src: url('.../fonts/roboto-medium-webfont.woff2') format('woff2'),
         url('../fonts/roboto-medium-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
@@ -563,11 +563,11 @@ ul.getin_touch li i {
     color: #dbdbdb;
     font-size: 12px;
     height: 40px;
-    padding-left: 15px;
+    padding: 0px 5px;
     position: relative;
     width: 223px;
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
 }
 
 .button_s {
@@ -575,15 +575,15 @@ ul.getin_touch li i {
     border: medium none;
     display: inline-block;
     height: 40px;
-    left: 232px;
+    right: 200px;
     line-height: 38px;
     margin-top: 0;
     position: absolute;
     text-align: center;
     width: 40px;
     font-size: 22px;
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
 }
 
 .footer_fourth .search {
@@ -591,7 +591,7 @@ ul.getin_touch li i {
 }
 
 .bg_gallery {
-    background: url(../images/bg-gallery.png) no-repeat;
+    background: url('../images/bg-gallery.jpg') no-repeat;
     background-position: bottom;
     background-color: #edf3f8;
 }
@@ -2202,7 +2202,7 @@ i.icon-safety-shower {
 }
 
 .social-networks .social-icons-2 span:hover .fa {
-    background: #FFD119;
+  background: #936e55;
     color: #fff;
 }
 
@@ -2530,10 +2530,10 @@ i.icon-safety-shower {
 #property-d-1-2 {
     background-color: #fff;
     position: relative;
-    -moz- transform: translateY(-100%);
-    -ms- transform: translateY(-100%);
-    -o- transform: translateY(-100%);
-    -webkit- transform: translateY(-100%);
+    -moz-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    -o-transform: translateY(-100%);
+    -webkit-transform: translateY(-100%);
     transform: translateY(-100%);
 }
 
@@ -3578,7 +3578,7 @@ i.icon-safety-shower {
 }
 
 #news-section-1 .add-on:hover {
-    background: 9c9c9c;
+    background: #9c9c9c;
     color: #936e55;
     transition: color 1000ms ease 0s, background-color 1500ms ease 0s;
 }

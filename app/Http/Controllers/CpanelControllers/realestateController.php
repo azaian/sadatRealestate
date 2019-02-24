@@ -72,6 +72,16 @@ class RealestateController extends Controller
         if (isset($request->images)) {
             $this->storeExtraImages($request->images, $RS_id, $pathtoupload);
         }
+
+
+
+
+
+        $message= "تم اضافه عقار جديد تحت عنوان <br> ".$realEstate->name;
+        Sendmailwithaction($message);
+
+
+
         return redirect('admin/realestates')->with('success', 'data inseret successfully');
     }
 

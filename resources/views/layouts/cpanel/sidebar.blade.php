@@ -100,6 +100,12 @@
             </div><!-- menu-item -->
         </a><!-- br-menu-link -->
 
+        <a href="{{route('subscribe.index')}}" class="br-menu-link @yield('subscribe')">
+            <div class="br-menu-item">
+                <i class="menu-item-icon icon ion-gear-a  tx-22"></i>
+                <span class="menu-item-label">المتابعين</span>
+            </div><!-- menu-item -->
+        </a><!-- br-menu-link -->
 
 
         <a href="{{route('contactus.index')}}" class="br-menu-link @yield('contactus')">

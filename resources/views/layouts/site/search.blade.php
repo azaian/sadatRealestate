@@ -2,7 +2,7 @@
 <section class="property-query-area padding_bottom rtl">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 text-center">
+            <div class="col-xs-12 text-center">
                 <h2 class="uppercase">بحث متقدم</h2>
                 <p class="heading_space"></p>
             </div>
@@ -10,7 +10,7 @@
         <div class="row">
             <form class="callus" action="{{route('listing')}}" method="post">
                 @csrf
-                <div class="col-md-2 col-sm-3 pull-right">
+                <div class="col-md-2 col-xs-6 pull-right">
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="single-query form-group">
@@ -20,7 +20,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2 col-sm-6 pull-right">
+                <div class="col-md-2 col-xs-6 pull-right">
                     <div class="single-query form-group">
                         <div class="intro">
                             الفئه
@@ -35,15 +35,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2 col-sm-6 pull-right">
+                <div class="col-md-2 col-xs-6 pull-right">
                     <div class="single-query form-group">
                         المنطقه
-                        <select name="district" class="district">
+                        <select name="district" class="district" style="margin-bottom:0;">
                             <option value="">غير محدد</option>
                         </select>
                     </div>
                 </div>
-                <div class="col-md-2 col-sm-6 pull-right">
+                <div class="col-md-2 col-xs-6 pull-right">
                     <div class="single-query form-group">
                         <div class="intro">
                             النوع
@@ -59,7 +59,7 @@
                 {{-- <div class="col-md-12">
                     <div class="row"> --}}
 
-                <div class="col-md-2 col-sm-3 pull-right">
+                <div class="col-md-2 col-xs-6 pull-right">
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="single-query form-group">
@@ -69,7 +69,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2 col-sm-3 pull-right">
+                <div class="col-md-2 col-xs-6 pull-right">
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="single-query form-group">
@@ -80,7 +80,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-offset-4 col-md-4 text-right form-group">
+                <div class="col-xs-offset-4 col-xs-4 text-right form-group">
                     <button type="submit" class="btn-blue border_radius">بحث</button>
                     {{-- </div>
                     </div> --}}

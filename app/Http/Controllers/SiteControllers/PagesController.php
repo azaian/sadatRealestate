@@ -27,14 +27,18 @@ class PagesController extends Controller
       ['approvement',1],
       ['catch',1],
       ['cat_id',$realEstate->cat_id]
-      ])->take(3)->get();
+      ])->take(5)->get();
+        $rel_realEstates = Realestate::latest()->where([
+      ['approvement',1],
+      ['cat_id',$realEstate->cat_id]
+      ])->take(15)->get();
         // if (isset($realEstate->extraImages())) {
         //   print_r($realEstate->extraImages());
         // }
-        return view('site.RealEstate', compact('realEstate', 'lots'));
+        return view('site.RealEstate', compact('realEstate', 'lots', 'rel_realEstates'));
     }
 
-    
+
     public function searchResult(Request $request)
     {
         $searchCondtions=$this->setSearchConditions($request);

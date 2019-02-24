@@ -190,6 +190,9 @@ active
                 <div class="row mg-b-25">
                     <div class="col-lg">
                         <textarea class="form-control" name="details" placeholder="تفاصيل عن الاعلان" rows="8" cols="80" required>@if(isset($realEstate->details)){{ $realEstate->details }}@endif</textarea>
+                        <script>
+                            CKEDITOR.replace('details' );
+                          </script>
                     </div><!-- col -->
 
                 </div>

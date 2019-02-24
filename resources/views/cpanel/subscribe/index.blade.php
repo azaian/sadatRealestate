@@ -1,9 +1,9 @@
 @extends('layouts.cpanel.index')
 
 @section('title')
-Slider Index
+جدول المتابعين
 @endsection
-@section('slider')
+@section('subscribe')
 active
 @endsection
 @section('content')
@@ -12,8 +12,8 @@ active
 <div class="br-mainpanel">
     <div class="br-pageheader pd-y-15 pd-l-20">
         <nav class="breadcrumb pd-0 mg-0 tx-12">
-            <a class="breadcrumb-item" href="{{url('admin/')}}">Home Page</a>
-            <span class="breadcrumb-item active">Slider</span>
+            <a class="breadcrumb-item" href="{{url('admin/')}}">الرئيسيه</a>
+            <span class="breadcrumb-item active">المتابعين</span>
         </nav>
     </div><!-- br-pageheader -->
 
@@ -37,7 +37,7 @@ active
 
 
     <div class="pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30">
-        <h4 class="tx-gray-800 mg-b-5">Slider Table</h4>
+        <h4 class="tx-gray-800 mg-b-5">جدول المتابعين</h4>
     </div>
 
 
@@ -45,9 +45,9 @@ active
 
     <div class="br-pagebody">
         <div class="br-section-wrapper">
-            <a href="{{ route('slider.create') }}" class="btn btn-primary btn-with-icon">
+            <a href="{{ route('subscribe.create') }}" class="btn btn-primary btn-with-icon">
                 <div class="ht-40 justify-content-between">
-                    <span class="pd-x-15">Add New Slide</span>
+                    <span class="pd-x-15">ارسال رساله لكل المتابعين</span>
                     <span class="icon wd-40"><i class="fa fa-plus"></i></span>
                 </div>
             </a>
@@ -55,35 +55,22 @@ active
                 <table id="slidertable" class="table display responsive nowrap">
                     <thead>
                         <tr>
-                            <th class="wd-20p">العنوان</th>
-                            <th class="wd-20p">الوصف</th>
-                            <th class="wd-40p">الصوره</th>
-                            <th class="wd-20p">Action</th>
+                            <th class="wd-5p">البريد الالكترونى </th>
+
+                            <th class="wd-20p">الاجراءات</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @if(isset($sliders) && count($sliders)>0)
-                        @foreach($sliders as $oneslide)
+                        @if(isset($subscribers) && count($subscribers)>0)
+                        @foreach($subscribers as $onesubscriber)
                         <tr>
-                            <td>{{ $oneslide->title }}</td>
-                            <td>{{ $oneslide->description }}</td>
+                            <td>{{ $onesubscriber->email }}</td>
                             <td>
-                                <img style="height:100%;width:100%;" src="{{imagepath('assets/img/slider',$oneslide->image)}}" alt="">
-                            </td>
-                            <td>
-                                <a href="{{ route('slider.edit',$oneslide->id) }}" class="btn btn-primary btn-icon rounded-circle mg-r-5">
+                                <a href="{{ route('subscribe.show',$onesubscriber->id) }}" class="btn btn-primary btn-icon rounded-circle mg-r-5">
                                     <div><i class="fa fa-edit"></i></div>
                                 </a>
-                                @if ($oneslide->active == 1)
-                                <a href="{{ route('slider.changeactivationstatus',$oneslide->id) }}" class="btn btn-danger btn-icon rounded-circle mg-r-5">
-                                    <div><i class="fa fa-times"></i></div>
-                                </a>
-                                @else
-                                <a href="{{ route('slider.changeactivationstatus',$oneslide->id) }}" class="btn btn-success btn-icon rounded-circle mg-r-5">
-                                    <div><i class="fa fa-arrow-right"></i></div>
-                                </a>
-                                @endif
-                                <a href="{{ route('slider.delete',$oneslide->id) }}" class="btn btn-dark btn-icon rounded-circle mg-r-5">
+
+                                <a href="{{ route('subscribe.edit',$onesubscriber->id) }}" class="btn btn-dark btn-icon rounded-circle mg-r-5">
                                     <div><i class="fa fa-trash"></i></div>
                                 </a>
                             </td>

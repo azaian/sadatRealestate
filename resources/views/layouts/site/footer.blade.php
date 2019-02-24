@@ -6,13 +6,24 @@
                 <div class="footer_panel bottom30">
                     <a href="" class="logo bottom30"><img src="{{url('site/img/logo.png')}}" alt="logo"></a>
                     <p class="bottom15">عقار السادات ... هو أول وأكبر تجمع للعقارات على مستوى مدينة السادات.
+                        <br> ملكيه الموقع لشركة <span style="display: block;font-size: 16px;font-weight:bold;color:#936e55;">السادات العقاريه المتحده</span>
                     </p>
+
                     <p class="bottom15"> <a href="javascript:void(0)"></a></p>
                     <ul class="social_share">
                         <li><a href="{{$Dataa['allmainsettings']->facebookurl}}" class="facebook"><i class="icon-facebook-1"></i></a></li>
                         <li><a href="{{$Dataa['allmainsettings']->twitterurl}}" class="twitter"><i class="icon-twitter-1"></i></a></li>
                         <li><a href="{{ $Dataa['allmainsettings']->googleplusurl}}" class="google"><i class="icon-youtube"></i></a></li>
                     </ul>
+
+                    <form class="top30" method="post" action="{{route('addemail')}}">
+                        @csrf
+                        <input class="search" name="email" placeholder="أدخل بريدك الالكترونى لمتابعتنا" type="email">
+                        <a class="button_s" href="#">
+                            <i class="icon-mail-envelope-open"></i>
+                        </a>
+                    </form>
+
                 </div>
             </div>
             {{-- <div class="col-md-3 col-sm-6 pull-right">
@@ -91,6 +102,7 @@
 
             <div class="col-md-3 col-sm-6 pull-right">
                 <div class="footer_panel bottom30">
+
                     <h4 class="bottom30">تواصل معنا</h4>
                     <ul class="getin_touch">
                         @if (isset($Dataa['allmainsettings']))
@@ -109,6 +121,7 @@
                         <li><i class="icon-icons74"></i>{{$Dataa['allmainsettings']->address}}</li>
                         @endif
                     </ul>
+
                 </div>
             </div>
 

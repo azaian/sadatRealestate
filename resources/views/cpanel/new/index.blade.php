@@ -55,10 +55,10 @@ active
                 <table id="slidertable" class="table display responsive nowrap">
                     <thead>
                         <tr>
-                            <th class="wd-5p">العنوان</th>
+                            <th class="wd-40p">العنوان</th>
                             {{-- <th class="wd-5p">الوصف</th> --}}
-                            <th class="wd-400p">الصوره</th>
-                            <th class="wd-30p">Action</th>
+                            <th class="wd-20p">الصوره</th>
+                            <th class="wd-40p">Action</th>
                         </tr>
                     </thead>
                     <tbody>

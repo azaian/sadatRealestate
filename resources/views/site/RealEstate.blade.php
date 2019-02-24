@@ -28,8 +28,16 @@ Real Estate
 <section id="property" class="padding_top padding_bottom_half">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 listing1 property-details pull-right">
-                <h2 class="text-uppercase rtl">{{ $realEstate->title }}</h2>
+            <div class="col-md-8 col-xs-12 listing1 property-details pull-right">
+                <h2 class="text-uppercase rtl">{{ $realEstate->title }}
+                    <span class="pull-left" style="padding: 10px 30px;background-color: #936e55;color: #fff;font-size: 23px;">
+                        @if ($realEstate->available)
+                        متاح
+                        @else
+                        تم البيع
+                        @endif
+                    </span>
+                </h2>
                 <p class="bottom30 top10 rtl">رقم العقار : {{ $realEstate->id }}
                     <br>عدد المشاهدات : {{ $realEstate->views }}
                     <br> افض الى المفضله: <a href="#" id="addfav"><i class="icon-like"></i></a>
@@ -57,10 +65,21 @@ Real Estate
             <span><i class="icon-old-television"></i>TV Lounge</span>
             <span><i class="icon-garage"></i>1 Garage</span> --}}
                 </div>
-                <h2 class="text-uppercase rtl">تفاصيل الاعلان</h2>
+                <h2 class="text-uppercase rtl">تفاصيل الاعلان
+                    <span class="pull-left" style="padding: 10px 30px;background-color: #936e55;color: #fff;font-size: 23px;">
+                        {{ $realEstate->price }}
+                        @if (isset($realEstate))
+                        @if ($realEstate->category()->name== 'مزارع')
+                        جنيه للفدان
+                        @else
+                        جنيه
+                        @endif
+                        @endif
+                    </span>
+                </h2>
 
                 <div class="text-it-p bottom40 rtl">
-                    <p>{{ $realEstate->details }}</p>
+                    <p>{!! $realEstate->details !!}</p>
                 </div>
                 <div class="row property-d-table bottom40 rtl">
                     <div class="col-md-5 col-sm-5 col-xs-12 pull-right">
@@ -78,7 +97,14 @@ Real Estate
                                 </tr>
                                 <tr>
                                     <td><b>السعر</b></td>
-                                    <td class="text-right">{{ $realEstate->price }}</td>
+                                    <td class="text-right">{{ $realEstate->price }}
+                                        @if (isset($realEstate))
+                                        @if ($realEstate->category()->name== 'مزارع')
+                                        جنيه للفدان
+                                        @else
+                                        جنيه
+                                        @endif
+                                        @endif</td>
                                 </tr>
                                 <tr>
                                     <td><b>المساحه</b></td>
@@ -87,7 +113,7 @@ Real Estate
                                 <tr>
                                     <td><b>قابل للتفاوض</b></td>
                                     <td class="text-right">
-                                        @if ($realEstate->negotiatale==1)
+                                        @if ($realEstate->negotiable ==1)
                                         نعم
                                         @else
                                         لا
@@ -101,16 +127,18 @@ Real Estate
                                         ايجار
                                         @else
                                         للبيع
-                                        @endif</td>
+                                        @endif
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td><b>الحاله</b></td>
                                     <td class="text-right">
-                                        @if ($realEstate->avaialbe==1)
+                                        @if ($realEstate->available)
                                         متاح
                                         @else
                                         تم البيع
-                                        @endif</td>
+                                        @endif
+                                    </td>
                                     </td>
                                 </tr>
                                 <tr>
@@ -142,71 +170,19 @@ Real Estate
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-md-7 col-sm-7 col-xs-12">
-                        <h2 class="text-uppercase bottom20 rtl">تواصل معنا</h2>
-                        <div class="agent_wrap bottom15" style="border:#936e55 3px solid;border-radius:10px;">
-                            <table class="agent_contact table">
-                                <tbody>
-                                    @php
-                                    $i=0;
-                                    @endphp
-                                    @if (isset($Dataa['allmainsettings']))
-                                    @foreach (explode("/",$Dataa['allmainsettings']->mobilenumber) as $value)
-                                    @if ($i++>=2)
-                                    @break
-                                    @endif
-                                    <tr class="bottom10">
-                                        <td><strong>الهاتف:</strong></td>
-                                        <td class="text-right">
-                                            {{ $value }}
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                    @endif
-                                    @if (isset($Dataa['allmainsettings']->email))
-                                    <tr>
-                                        <td><strong>الايميل:</strong></td>
-                                        <td class="text-right">
-                                            <a href="mailto:{{ $Dataa['allmainsettings']->email }}">
-                                                {{ $Dataa['allmainsettings']->email }}
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    @endif
+                    <div class="col-md-7 col-sm-7 col-xs-12 pull-right">
 
-                                </tbody>
-                            </table>
-                        </div>
-                        <form class="callus" method="post" action="{{ route('sendnewpost') }}">
-                            @csrf
-                            <div class="row">
-                                <div class="col-sm-12 pull-right">
-                                    <div class="form-group">
-                                        <input type="text" name="name" class="form-control" placeholder="الاسم" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="tel" name="mobilenumber" class="form-control" placeholder="رقم الهاتف" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="email" name="email" class="form-control" placeholder="الايميل" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <textarea class="form-control" name="message" placeholder="الرساله" required></textarea>
-                                    </div>
-                                    <input type="hidden" name="rs_id" value="{{$realEstate->id }}">
-                                </div>
-                                <div class="col-sm-6">
+                        <h2 class="text-uppercase bottom20 rtl">الخريطه</h2>
+                        <div class="row bottom40">
 
-                                </div>
-                                <div class="col-sm-12 row">
-                                    <div class="row">
-                                        <div class="col-sm-3 pull-right">
-                                            <input type="submit" style="width:unset;" class="btn-blue uppercase border_radius" value="ارسال">
-                                        </div>
-                                    </div>
-                                </div>
+                            {{-- map part  --}}
+
+                            <div class="form-group">
+                                {{-- <label for="exampleInputEmail1">{{__('ابحث على الخريطه')}}</label> --}}
+                                <div id="shoplocationedit" style="width:100%;height:350px"></div>
                             </div>
-                        </form>
+                        </div>
+
                     </div>
                 </div>
 
@@ -229,31 +205,20 @@ Real Estate
                 @endif
                 @endif
 
-                <h2 class="text-uppercase bottom20 rtl">الخريطه</h2>
-                <div class="row bottom40">
 
-
-
-                    {{-- map part  --}}
-
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">{{__('ابحث على الخريطه')}}</label>
-                        <div id="shoplocationedit" style="width:100%;height:350px"></div>
-                    </div>
-                </div>
 
 
 
             </div>
 
-            <aside class="col-md-4 col-xs-12 rtl">
+            <aside class="col-md-4 col-xs-12 ">
                 <div class="property-query-area clearfix">
                     <div class="col-md-12">
-                        <h3 class="text-uppercase bottom20 top15">بحث متقدم</h3>
+                        <h3 class="text-uppercase bottom20 top15 rtl">بحث متقدم</h3>
                     </div>
-                    <form class="callus" method="post" action="{{route('listing')}}">
+                    <form class="callus rtl" method="post" action="{{route('listing')}}" style="color:#fff">
                         @csrf
-                        <div class="single-query form-group col-sm-12">
+                        <div class=" form-group col-md-6 col-sm-12 pull-right ">
                             <div class="intro">
                                 الفئه
                                 <select name="cat_id" class="cat_id">
@@ -266,15 +231,18 @@ Real Estate
                                 </select>
                             </div>
                         </div>
-                        <div class="single-query form-group col-sm-12">
-                            المنطقه
-                            <select name="district" class="district" style="background-color:#fff">
-                                <option value="">غير محدد</option>
-                            </select>
+                        <div class="col-md-6 form-groupcol-sm-12 pull-right ">
+                            <div class="single-query  ">
+                                المنطقه
+                                <select name="district" class="district" style="background-color:#fff !important; ">
+                                    <option value="">غير محدد</option>
+                                </select>
 
+                            </div>
                         </div>
-                        <div class="single-query form-group col-sm-12">
+                        <div class=" form-group col-md-6 col-sm-12 pull-right">
                             <div class="intro">
+                                النوع
                                 <select name="type">
                                     <option value="sale" class="active">بيع</option>
                                     <option value="rent">ايجار</option>
@@ -282,32 +250,33 @@ Real Estate
                             </div>
                         </div>
 
-                        <div class="col-sm-12">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="single-query form-group">
-                                        اعلى سعر
-                                        <input type="number" class="keyword-input" name="price[1]" placeholder="اعلى سعر">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="single-query form-group">
-                                        اكبر مساحه
-                                        <input type="number" class="keyword-input" name="area[1]" placeholder="اكبر مساحه">
-                                    </div>
-                                </div>
+
+                        <div class="col-sm-6  form-group pull-right" style="margin-bottom: 19px;">
+                            <div class="single-query">
+                                السعر
+                                <input type="number" class="keyword-input" name="price[1]" placeholder="اعلى سعر">
                             </div>
                         </div>
 
 
 
-                        <div class="col-sm-12 form-group">
-                            <button type="submit" class="btn-blue border_radius">بحث</button>
+                        <div class="col-sm-6 pull-right">
+                            <div class="single-query form-group">
+                                المساحه
+                                <input type="number" class="keyword-input" name="area[1]" placeholder="اكبر مساحه">
+                            </div>
                         </div>
+
+                        <div class="col-sm-6 form-group">
+                            <button type="submit" class=" btn-blue border_radius center-block" style="display:block !important">بحث</button>
+                        </div>
+
+
                     </form>
 
                 </div>
-                <div class="row">
+
+                {{-- <div class="row">
                     <div class="col-md-12">
                         <h3 class="bottom40 margin40 rtl">عقارات لقطه</h3>
                     </div>
@@ -317,24 +286,157 @@ Real Estate
                 @foreach ($lots as $lot)
                 <div class="row bottom20 rtl pull-right">
                     <div class="col-md-4 col-sm-4 col-xs-6 p-image  pull-right">
-                        <img src="{{ url('assets/img/realestate/'.$lot->main_pic) }}" alt="image" width="80px" height="77px" />
-                    </div>
-                    <div class="col-md-8 col-sm-8 col-xs-6  pull-right">
-                        <div class="feature-p-text">
-                            <h4>
-                                <a href="{{ url('realestate/'.$lot->id) }}">{{ $lot->title }}</a>
-                            </h4>
-                            <p class="bottom15"></p>
-                            <a href="{{ url('realestate/'.$lot->id) }}">مشاهده</a>
+                        <img src="{{ url('assets/img/realestate/'.$lot->main_pic) }}"
+                alt="image" width="80px" height="77px" />
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-6  pull-right">
+            <div class="feature-p-text">
+                <h4>
+                    <a href="{{ url('realestate/'.$lot->id) }}">{{ $lot->title }}</a>
+                </h4>
+                <p class="bottom15"></p>
+                <a href="{{ url('realestate/'.$lot->id) }}">مشاهده</a>
+            </div>
+        </div>
+    </div>
+    @endforeach
+    @endif --}}
+
+    <div class="row clearfix">
+        <div class="col-md-12">
+            <h3 class="margin40 bottom20 rtl">عقارات لقطه</h3>
+        </div>
+        <div class="col-md-12">
+            <div id="agent-2-slider" class="owl-carousel">
+                @if ($lots !== NULL && count($lots)>0)
+                @foreach ($lots as $lot)
+                <div class="item">
+                    <div class="property_item heading_space">
+                        <div class="image">
+                            <a href="{{ url('realestate/'.$lot->id) }}">
+                                <img src="{{ url('assets/img/realestate/'.$lot->main_pic) }}" alt="listin" class="img-responsive" style="max-height: 250px;"></a>
+                            <div class="feature">
+                                <span class="tag-2">
+                                    @if ($lot->type=='rent')
+                                    ايجار
+                                    @else
+                                    للبيع
+                                    @endif
+                                </span>
+                            </div>
+                            <div class="feature">
+                                <span class="tag-2" style="left:0;right:unset;">
+                                    @if ($lot->available)
+                                    متاح
+                                    @else
+                                    تم البيع
+                                    @endif
+                                </span>
+                            </div>
+                            <div class="price clearfix">
+                                <a href="{{ url('realestate/'.$lot->id) }}">
+                                    <span class="tag pull-right rtl">
+                                        {{ $realEstate->title }} <br>
+                                        {{ $lot->price}}
+                                        @if (isset($lot))
+                                        @if ($lot->category()->name== 'مزارع')
+                                        جنيه للفدان
+                                        @else
+                                        جنيه
+                                        @endif
+                                        @endif
+                                    </span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 @endforeach
                 @endif
-
-
-            </aside>
+            </div>
         </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="row rtl">
+        <div class=" col-xs-12">
+            <h2 class="text-uppercase bottom20 rtl">تواصل معنا</h2>
+            <div class="agent_wrap bottom15" style="border:#936e55 3px solid;border-radius:10px;">
+                <table class="agent_contact table">
+                    <tbody>
+                        @php
+                        $i=0;
+                        @endphp
+                        @if (isset($Dataa['allmainsettings']))
+                        @foreach (explode("/",$Dataa['allmainsettings']->mobilenumber) as $value)
+                        @if ($i++>=2)
+                        @break
+                        @endif
+                        <tr class="bottom10">
+                            <td><strong>الهاتف:</strong></td>
+                            <td class="text-right">
+                                {{ $value }}
+                            </td>
+                        </tr>
+                        @endforeach
+                        @endif
+                        @if (isset($Dataa['allmainsettings']->email))
+                        <tr>
+                            <td><strong>الايميل:</strong></td>
+                            <td class="text-right">
+                                <a href="mailto:{{ $Dataa['allmainsettings']->email }}">
+                                    {{ $Dataa['allmainsettings']->email }}
+                                </a>
+                            </td>
+                        </tr>
+                        @endif
+
+                    </tbody>
+                </table>
+            </div>
+            <form class="callus" method="post" action="{{ route('sendnewpost') }}">
+                @csrf
+                <div class="row">
+                    <div class="col-sm-12 pull-right">
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" placeholder="الاسم" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="mobilenumber" class="form-control" placeholder="رقم الهاتف" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" placeholder="الايميل" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" name="message" placeholder="الرساله" required></textarea>
+                        </div>
+                        <input type="hidden" name="rs_id" value="{{$realEstate->id }}">
+                    </div>
+                    <div class="col-sm-6">
+
+                    </div>
+                    <div class="col-sm-12 row">
+                        <div class="row">
+                            <div class="col-sm-3 pull-right">
+                                <input type="submit" style="width:unset;" class="btn-blue uppercase border_radius" value="ارسال">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    </aside>
+    </div>
+
+
+    <div class="row bottom30">
         <div class="social-networks">
             <div class="social-icons-2">
                 <span class="share-it">مشاركه العقار</span>
@@ -343,22 +445,103 @@ Real Estate
 
             </div>
         </div>
-
-        <script>
-            function share(url) {
-                FB.ui({
-                    method: 'share',
-                    hashtag: '#thisisahashtag',
-                    href: url,
-                    display: 'popup'
-                }, function(response) {});
-            }
-        </script>
     </div>
+
+    <script>
+        function share(url) {
+            FB.ui({
+                method: 'share',
+                hashtag: '#thisisahashtag',
+                href: url,
+                display: 'popup'
+            }, function(response) {});
+        }
+    </script>
+
+    <!--Featured Property-->
+    <div class="row ">
+        <div class="col-sm-12 rtl">
+            <h2 class="uppercase">عقارات ذات صله</h2>
+            <p class="heading_space">
+            </p>
+        </div>
+    </div>
+
+    <div class="row top15">
+        <div class="three-item owl-carousel">
+            @if (isset($rel_realEstates)&&count($rel_realEstates)>0)
+            @foreach ($rel_realEstates as $rel_realEstate)
+            <div class="item feature_item">
+                <div class="image">
+                    <a href="{{ url('realestate/'.$rel_realEstate->id) }}">
+                        <img src="{{ url('assets/img/realestate/'.$rel_realEstate->main_pic)}}" alt="Featured Property" style="width:364px; height:254px;">
+                    </a>
+                    <span class="price default_clr">
+                        @if ($rel_realEstate->type == 'sale')
+                        للبيع
+                        @else
+                        للايجار
+                        @endif
+                    </span>
+                </div>
+                <div class="proerty_content">
+                    <div class="proerty_text rtl" style="height:118px">
+                        <h3 class="bottom15">
+                            <a href="{{ url('realestate/'.$rel_realEstate->id) }}">
+                                <?php echo str_limit($rel_realEstate->title,50)?>
+                            </a>
+                        </h3>
+                        {{-- <p>nonummy nibh tempor cum soluta nobis consectetuer adipiscing eleifend option nihil imperdiet doming…</p> --}}
+
+                    </div>
+                    <div class="property_meta rtl">
+                        <span>
+                            {{ $rel_realEstate->area }}
+                            @if (isset($rel_realEstate))
+                            @if ($rel_realEstate->category()->name == 'مزارع')
+                            فدان
+                            @else
+                            متر
+                            @endif
+                            @endif
+                            <i class="icon-select-an-objecto-tool"></i>
+                        </span>
+                        <span><i class="icon-bed" style="display:none"></i>
+                            @if ($rel_realEstate->available)
+                            متاح
+                            @else
+                            تم البيع
+                            @endif
+                        </span>
+                        <span>
+                            {{ $rel_realEstate->views }}
+                            <i class="fa fa-eye"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="favroute clearfix">
+                    <p class="pull-md-right rtl">{{ $rel_realEstate->price }}
+                        @if (isset($rel_realEstate))
+
+                        @if ($rel_realEstate->category()->name== 'مزارع')
+                        جنيه للفدان
+                        @else
+                        جنيه
+                        @endif
+                        @endif
+                    </p>
+                </div>
+            </div>
+            @endforeach
+            @endif
+
+
+        </div>
+    </div>
+    </div>
+
 </section>
 <!-- Property Detail End -->
-
-
 @endsection
 
 @section('extraJS')

@@ -145,6 +145,9 @@ active
                     <div class="col-lg">
                         وصف الاعلان
                         <textarea class="form-control" name="details" placeholder="تفاصيل عن الاعلان" rows="8" cols="80" required></textarea>
+                        <script>
+                            CKEDITOR.replace('details' );
+                        </script>
                     </div><!-- col -->
 
                 </div>

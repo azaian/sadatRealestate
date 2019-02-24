@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'SiteControllers\HomeController@index')->name('homePage');
+Route::post('/addemail', 'SiteControllers\HomeController@addemail')->name('addemail');
+
 Route::get('/realestate/{id}', 'SiteControllers\PagesController@showRealEstate')->name('realEstate');
 Route::post('/listing', 'SiteControllers\PagesController@searchResult')->name('listing');
 Route::get('/listing', 'SiteControllers\HomeController@index');
@@ -64,6 +66,7 @@ Route::group(['prefix' => 'admin','middleware' => 'auth'], function () {
 
     Route::resource('/mainsettings', 'CpanelControllers\Mainsettingscontroller');
 
+    Route::resource('/subscribe', 'CpanelControllers\Subscribercontroller');
 
     Route::resource('/aboutus', 'CpanelControllers\Aboutuscontroller');
     Route::get('/aboutus/delete/{id}', 'CpanelControllers\Aboutuscontroller@delete')->name('aboutus.delete');

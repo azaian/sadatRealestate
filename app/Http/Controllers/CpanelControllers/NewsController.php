@@ -46,6 +46,8 @@ class NewsController extends Controller
         $newrecorde->image=uploadimage($request->image, $pathtoupload);
 
         $newrecorde->save();
+        $message= "تم اضافه خبر جديد تحت عنوان <br> ".$request->title;
+        Sendmailwithaction($message);
         return redirect()->back()->with('success', 'تم اضافه الخبر ');
     }
 
@@ -88,7 +90,7 @@ class NewsController extends Controller
         $newToupdate->title=$request->title;
         $newToupdate->description=$request->description;
         if (isset($request->image)) {
-            $newToupdate->image=uploadimage( $request->image,$pathtoupload);
+            $newToupdate->image=uploadimage($request->image, $pathtoupload);
         }
         $newToupdate->save();
         return redirect()->back()->with('success', 'تم تعديل البيانات');

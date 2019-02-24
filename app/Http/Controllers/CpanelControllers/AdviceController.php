@@ -46,6 +46,9 @@ class AdviceController extends Controller
         $newrecorde->image=uploadimage($request->image, $pathtoupload);
 
         $newrecorde->save();
+
+        $message= "تم اضافه نصيحه عقاريه جديده تحت عنوان <br> ".$newrecorde->title;
+        Sendmailwithaction($message);
         return redirect()->back()->with('success', 'تم اضافه النصيحه');
     }
 
@@ -88,7 +91,7 @@ class AdviceController extends Controller
         $adviceToupdate->title=$request->title;
         $adviceToupdate->description=$request->description;
         if (isset($request->image)) {
-            $adviceToupdate->image=uploadimage($request->image,$pathtoupload);
+            $adviceToupdate->image=uploadimage($request->image, $pathtoupload);
         }
         $adviceToupdate->save();
         return redirect()->back()->with('success', 'تم تعديل البيانات');
