@@ -94,6 +94,7 @@ class RealestateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
     {
         if ($id == "waiting") {
@@ -108,6 +109,16 @@ class RealestateController extends Controller
             $realEstates = Realestate::latest()->whereIn("id", $Ids)->whereApprovement(1)->paginate(20);
             return view('cpanel.realestates.index', compact('realEstates'));
         }
+    }
+
+    public function getRs(Request $request)
+    {
+        $realEstates[] =  Realestate::find($request->id);
+        if (empty($realEstates[0])) {
+            redirect('admin/realestates')->with('error', 'الكود غير موجود');
+        }
+
+        return view('cpanel.realestates.index', compact('realEstates'));
     }
 
     /**

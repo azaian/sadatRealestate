@@ -30,6 +30,23 @@ active
         </div><!-- d-flex -->
     </div>
     @endif
+    @if (\Session::has('error'))
+    <div class="alert alert-danger alert-bordered pd-y-20" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+        <div class="d-sm-flex align-items-center justify-content-start">
+            <i class="icon ion-ios-checkmark alert-icon tx-52 mg-r-20 tx-danger"></i>
+            <div class="mg-t-20 mg-sm-t-0">
+                <h5 class="mg-b-2 tx-danger">خطأ</h5>
+                <p class="mg-b-0 tx-gray">{{ \Session::get('error') }}</p>
+            </div>
+        </div><!-- d-flex -->
+    </div>
+    @php
+    \Session::forget('error')
+    @endphp
+    @endif
 
 
     <div class="pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30">
@@ -39,6 +56,25 @@ active
 
     <div class="br-pagebody">
         <div class="br-section-wrapper">
+
+            <div class="row">
+                <div class="col-md-2 col-xs-6">
+                    <form class="" action="{{ route("getRs") }}" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label for="" style="display:block">ابحث بكود العقار</label>
+                            <input class="" type="number" min=0 name="id" value="" required>
+                            <input type="submit" name="submit" value="بحث">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-md-10 col-xs-12">
+
+                </div>
+            </div>
+            <hr>
+            <hr>
             <div class="table-wrapper">
                 <table id="slidertable" class="table display responsive nowrap">
                     <thead>
@@ -53,7 +89,7 @@ active
                         </tr>
                     </thead>
                     <tbody>
-                        @if(isset($realEstates) && count($realEstates)>0)
+                        @if(isset($realEstates) && count($realEstates)>0 && isset($realEstates[0]->id))
                         @foreach($realEstates as $realEstate)
                         <tr>
 
@@ -122,7 +158,9 @@ active
                     </tbody>
                 </table>
             </div><!-- table-wrapper -->
+            @if ($realEstates instanceof \Illuminate\Pagination\LengthAwarePaginator)
             {{$realEstates->links()}}
+            @endif
         </div><!-- br-section-wrapper -->
     </div><!-- br-pagebody -->
 
