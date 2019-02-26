@@ -53,6 +53,8 @@
         </a><!-- br-menu-link -->
         <ul class="br-menu-sub nav flex-column">
             <li class="nav-item"><a href="{{ route('realestates.index') }}" class="nav-link">العقارات</a></li>
+            <li class="nav-item"><a href="{{ route('realestates.show',"waiting") }}" class="nav-link">عقارات تحت الانتظار</a></li>
+            <li class="nav-item"><a href="{{ route('realestates.show',"msg") }}" class="nav-link">عقارات لها استفسارات</a></li>
             <li class="nav-item"><a href="{{ route('realestates.create') }}" class="nav-link">اضافه عقار</a></li>
         </ul>
 

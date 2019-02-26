@@ -12,6 +12,7 @@ use App\Realestate;
 use App\Rsextradata;
 use App\Rsextrapicture;
 use App\District;
+use App\Contactus;
 
 class RealestateController extends Controller
 {
@@ -22,7 +23,7 @@ class RealestateController extends Controller
      */
     public function index()
     {
-        $realEstates = Realestate::latest()->paginate(20);
+        $realEstates = Realestate::latest()->whereApprovement(1)->paginate(20);
         return view('cpanel.realestates.index', compact('realEstates'));
     }
 
@@ -95,7 +96,18 @@ class RealestateController extends Controller
      */
     public function show($id)
     {
-        //
+        if ($id == "waiting") {
+            $realEstates = Realestate::latest()->whereApprovement(0)->paginate(20);
+            return view('cpanel.realestates.index', compact('realEstates'));
+        } elseif ($id== "msg") {
+            $IDs= Contactus::latest()->where('rs_id', "!=", -1)->pluck('rs_id');
+            $Ids=array();
+            if (isset($IDs[0])) {
+                $Ids=$IDs->toArray();
+            }
+            $realEstates = Realestate::latest()->whereIn("id", $Ids)->whereApprovement(1)->paginate(20);
+            return view('cpanel.realestates.index', compact('realEstates'));
+        }
     }
 
     /**

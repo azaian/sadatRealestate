@@ -1227,7 +1227,8 @@ nav.navbar.bootsnav ul.dropdown-menu.megamenu-content .content ul.menu-col li a:
 
 nav.navbar.bootsnav ul.dropdown-menu.megamenu-content .content ul.menu-col li a:hover,
 nav.navbar.bootsnav ul.dropdown-menu.megamenu-content .content ul.menu-col li a:focus {
-    color: #936e55;
+    color :#fff;
+    background-color: #936e55;
 }
 
 .megamenu-content.bg {
