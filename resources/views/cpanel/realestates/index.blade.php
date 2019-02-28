@@ -24,7 +24,7 @@ active
         <div class="d-sm-flex align-items-center justify-content-start">
             <i class="icon ion-ios-checkmark alert-icon tx-52 mg-r-20 tx-success"></i>
             <div class="mg-t-20 mg-sm-t-0">
-                <h5 class="mg-b-2 tx-success">Success.</h5>
+                <h5 class="mg-b-2 tx-success">تم.</h5>
                 <p class="mg-b-0 tx-gray">{{ \Session::get('success') }}</p>
             </div>
         </div><!-- d-flex -->
@@ -59,6 +59,7 @@ active
 
             <div class="row">
                 <div class="col-md-2 col-xs-6">
+
                     <form class="" action="{{ route("getRs") }}" method="post">
                         @csrf
                         <div class="form-group">
@@ -68,14 +69,69 @@ active
                         </div>
                     </form>
                 </div>
+                <div class="col-md-1">
 
-                <div class="col-md-10 col-xs-12">
+                </div>
+                <div class="col-md-9 col-xs-12">
+
+                    <form class="" action="{{ route("multiaction") }}" method="post">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="selected_RSs" value="" required hidden>
+
+                                    تم اختيار كود العقارات التاليه للتعديل
+                                    <input class="form-control" type="text" name="selected_RSsf" value="" disabled>
+                                </div>
+                            </div>
+                            @csrf
+                            <div class="col-md-4">
+                                <div class="pull-left">
+                                    <div class="row">
+
+                                        <button class="btn rounded-circle btn-success btn-icon rounded-circle" type="submit" name="action" value="approvement">
+                                            <div><i class="fa fa-bullhorn"></i></div>
+                                        </button>
+
+                                        <button class="btn  rounded-circle  btn-success btn-icon rounded-circle" type="submit" name="action" value="available">
+                                            <div><i class="fa fa-thumbs-up"></i></div>
+                                        </button>
+
+                                        <button class="btn  rounded-circle  btn-success btn-icon rounded-circle" type="submit" name="action" value="catch">
+                                            <div><i class="fa fa-star"></i></div>
+                                        </button>
+
+                                        {{-- <button class="btn btn-primary rounded-circle" type="submit" name="action" value="delete">
+                                            <i class="fa fa-trash"></i>
+                                        </button> --}}
+
+                                    </div>
+                                    <div class="row" style="margin-top:10px">
+
+                                        <button class="btn  rounded-circle  btn-danger btn-icon rounded-circle" type="submit" name="action" value="unapprovement">
+                                            <div><i class="fa fa-bullhorn"></i></div>
+                                        </button>
+                                        <button class="btn  rounded-circle  btn-danger btn-icon rounded-circle" type="submit" name="action" value="unavailable">
+                                            <div><i class="fa fa-thumbs-down"></i></div>
+                                        </button>
+
+                                        <button class="btn  rounded-circle  btn-danger btn-icon rounded-circle" type="submit" name="action" value="uncatch">
+                                            <div><i class="fa fa-star"></i></div>
+                                        </button>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
 
                 </div>
             </div>
             <hr>
             <hr>
             <div class="table-wrapper">
+
                 <table id="slidertable" class="table display responsive nowrap">
                     <thead>
                         <tr>
@@ -94,7 +150,7 @@ active
                         <tr>
 
                             <td>
-                                <input type="checkbox" name="selectedactions" value="{{ $realEstate->id }}">
+                                <input type="checkbox" name="selected_rs" value="{{ $realEstate->id }}">
                                 <a href="{{route('realEstate', $realEstate->id )}}">{{ $realEstate->id }}</a>
                             </td>
                             <td>{{$realEstate->name}}</td>
@@ -154,6 +210,7 @@ active
                             </td>
                         </tr>
                         @endforeach
+
                         @endif
                     </tbody>
                 </table>
@@ -166,4 +223,21 @@ active
 
 </div><!-- br-mainpanel -->
 <!-- ########## END: MAIN PANEL ########## -->
+
+@endsection
+
+@section('extraJS')
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("input[type=checkbox]").click(function() {
+            var favorite = [];
+            $.each($("input[name='selected_rs']:checked"), function() {
+                favorite.push($(this).val());
+            });
+            $("input[name=selected_RSs]").val(favorite.join(","));
+            $("input[name=selected_RSsf]").val(favorite.join(","));
+            // alert("My favourite sports are: " + favorite.join(","));
+        });
+    });
+</script>
 @endsection

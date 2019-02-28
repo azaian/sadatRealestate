@@ -79,9 +79,11 @@ Route::group(['prefix' => 'admin','middleware' => 'auth'], function () {
     //
     Route::resource('/categoryfeilds', 'CpanelControllers\categoryFeildsController');
 
+    Route::post('/realestatesmultiaction', 'CpanelControllers\realestateController@multiaction')->name('multiaction');
+    Route::post('/realestatesgetbyid', 'CpanelControllers\realestateController@getRs')->name('getRs');
+
     Route::resource('/realestates', 'CpanelControllers\realestateController');
     Route::get('/realestates/changeFlagStatus/{id}/{actionon}', 'CpanelControllers\realestateController@changeFlagStatus')->name("realestates.changeFlagStatus");
-    Route::post('/realestates', 'CpanelControllers\realestateController@getRs')->name('getRs');
 
     Route::resource('/districts', 'CpanelControllers\DistrictsController');
 

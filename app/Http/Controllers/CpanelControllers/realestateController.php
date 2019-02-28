@@ -293,4 +293,48 @@ class RealestateController extends Controller
         $realEstate->save();
         return redirect('admin/realestates')->with('success', 'toggled successfully');
     }
+
+
+    public function multiaction(Request $request)
+    {
+        $IDs = explode(',', $request->selected_RSs);
+        $actionOn = "";
+        $value=null;
+        $msg="";
+        if ($request->action=='approvement') {
+            $actionOn = "approvement";
+            $value=1;
+            $msg="تم الموافقه على  عرض العقارات";
+        } elseif ($request->action=='unapprovement') {
+            $actionOn = "approvement";
+            $value=0;
+            $msg="تم اخفاء الاعقارات";
+        } elseif ($request->action=='catch') {
+            $actionOn = "catch";
+            $value=1;
+            $msg="تم الاضافه الى العقارات اللطقه";
+        } elseif ($request->action=='uncatch') {
+            $actionOn = "catch";
+            $value=0;
+            $msg="تم الازاله من العقارات اللقطه";
+        } elseif ($request->action=='available') {
+            $actionOn = "available";
+            $value=1;
+            $msg="تم تعديل الحاله الى متاح";
+        } elseif ($request->action=='unavailable') {
+            $actionOn = "available";
+            $value=0;
+            $msg="تم تعديل الحاله الى تم البيع";
+        }
+        if ($value===null) {
+            return  redirect()->back()->with('error', 'خطئ فى تعديل البيانات');
+        }
+
+        foreach ($IDs as $id) {
+            $realEstate = Realestate::findOrFail($id);
+            $realEstate->$actionOn=$value;
+            $realEstate->save();
+        }
+        return redirect()->back()->with('success', $msg);
+    }
 }
