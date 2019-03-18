@@ -18,9 +18,9 @@
                                 <select name="cat_id" class="cat_id">
                                     <option value="">غير محدد</option>
                                     @if (isset($Dataa['categories'])&&count($Dataa['categories'])>0)
-                                    @foreach ($Dataa['categories'] as $category)
-                                    <option value="{{$category->id}}">{{$category->name}}</option>
-                                    @endforeach
+                                        @foreach ($Dataa['categories'] as $category)
+                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                        @endforeach
                                     @endif
                                 </select>
                             </div>
@@ -52,20 +52,35 @@
 
                     <div class="col-md-2 col-xs-6 pull-right">
                         <div class="row">
-                            <div class="col-sm-12">
+                            <div class="col-sm-6">
                                 <div class="single-query form-group">
-                                    المساحة
-                                    <input type="number" name="area[1]" min="0" class="keyword-input" placeholder=" مساحه">
+                                    اقل مساحه
+                                    <input type="number" name="area[0]" min="0" class="keyword-input" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-6 ">
+                                <div class="single-query form-group">
+                                    اكبر مساحه
+                                    <input type="number" name="area[1]" min="0" class="keyword-input" placeholder="">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-2 col-xs-6 pull-right">
                         <div class="row">
-                            <div class="col-sm-12">
+                            <div class="col-sm-6">
                                 <div class="single-query form-group">
-السعر
-                                    <input type="number" name="price[1]" min="0" class="keyword-input" placeholder=" سعر">
+                                    اقل سعر
+                                    <input type="number" name="price[0]" min="0" class="keyword-input"
+                                           placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="single-query form-group">
+                                    اكبر سعر
+                                    <input type="number" name="price[1]" min="0" class="keyword-input"
+                                           placeholder="">
                                 </div>
                             </div>
                         </div>
@@ -93,7 +108,8 @@
                                 <div class="col-sm-12">
                                     <div class="single-query form-group">
                                         ابحث بكود العقار
-                                        <input type="number" name="id" min="0" class="keyword-input" placeholder="رقم العقار">
+                                        <input type="number" name="id" min="0" class="keyword-input"
+                                               placeholder="رقم العقار">
                                     </div>
                                 </div>
                             </div>

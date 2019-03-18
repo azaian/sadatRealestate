@@ -88,32 +88,67 @@
             <aside class="col-md-4 col-xs-12 rtl">
                 <div class="property-query-area clearfix">
                     <div class="col-md-12">
-                        <h3 class="text-uppercase bottom20 top15">بحث متقدم</h3>
+                        <h3 class="text-uppercase bottom20 top15 rtl">بحث متقدم</h3>
                     </div>
-                    <form class="callus" method="post" action="{{route('listing')}}">
+                    <form class="callus rtl" method="post" action="{{route('listing')}}" style="color:#fff">
                         @csrf
-                        <div class="single-query form-group col-sm-12">
+                        <div class=" form-group col-md-6 col-sm-12 pull-right ">
                             <div class="intro">
                                 الفئه
                                 <select name="cat_id" class="cat_id">
                                     <option value="">غير محدد</option>
                                     @if (isset($Dataa['categories'])&&count($Dataa['categories'])>0)
-                                    @foreach ($Dataa['categories'] as $category)
-                                    <option value="{{$category->id}}">{{$category->name}}</option>
-                                    @endforeach
+                                        @foreach ($Dataa['categories'] as $category)
+                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                        @endforeach
                                     @endif
                                 </select>
                             </div>
                         </div>
-                        <div class="single-query form-group col-sm-12">
-                            المنطقه
-                            <select name="district" class="district" style="background-color:#fff">
-                                <option value="">غير محدد</option>
-                            </select>
+                        <div class="col-md-6 form-groupcol-sm-12 pull-right ">
+                            <div class="single-query  ">
+                                المنطقه
+                                <select name="district" class="district" style="background-color:#fff !important; ">
+                                    <option value="">غير محدد</option>
+                                </select>
 
+                            </div>
                         </div>
-                        <div class="single-query form-group col-sm-12">
+
+
+
+                        <div class="col-sm-6  form-group pull-right" style="margin-bottom: 19px;">
+                            <div class="single-query">
+                                اقل سعر
+                                <input type="number" class="keyword-input" name="price[0]" placeholder="اقل سعر">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6  form-group pull-right" style="margin-bottom: 19px;">
+                            <div class="single-query">
+                                اعلى سعر
+                                <input type="number" class="keyword-input" name="price[1]" placeholder="اعلى سعر">
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-6 pull-right">
+                            <div class="single-query form-group">
+                                اقل المساحه
+                                <input type="number" class="keyword-input" name="area[0]" placeholder="اقل مساحه">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 pull-right">
+                            <div class="single-query form-group">
+                                اكبر المساحه
+                                <input type="number" class="keyword-input" name="area[1]" placeholder="اكبر مساحه">
+                            </div>
+                        </div>
+
+                        <div class=" form-group col-md-6 col-sm-12 pull-right">
                             <div class="intro">
+                                النوع
                                 <select name="type">
                                     <option value="sale" class="active">بيع</option>
                                     <option value="rent">ايجار</option>
@@ -121,46 +156,15 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-12">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="single-query form-group">
-                                        اقل مساحه
-                                        <input type="number" class="keyword-input" name="area[0]" placeholder="اقل مساحه">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="single-query form-group">
-                                        اكبر مساحه
-                                        <input type="number" class="keyword-input" name="area[1]" placeholder="اكبر مساحه">
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-sm-6 form-group">
+                            <button type="submit" class=" btn-blue border_radius center-block" style="display:block !important">بحث</button>
                         </div>
 
-                        <div class="col-sm-12">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="single-query form-group">
-                                        اقل سعر
-                                        <input type="number" class="keyword-input" name="price[0]" placeholder="اقل سعر">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="single-query form-group">
-                                        اعلى سعر
-                                        <input type="number" class="keyword-input" name="price[1]" placeholder="اعلى سعر">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="col-sm-12 form-group">
-                            <button type="submit" class="btn-blue border_radius">بحث</button>
-                        </div>
                     </form>
 
                 </div>
+
                 <div class="row">
                     <div class="col-md-12">
                         <h3 class="bottom40 margin40 rtl">عقارات لقطه</h3>

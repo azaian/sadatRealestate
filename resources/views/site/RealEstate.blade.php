@@ -240,6 +240,38 @@ Real Estate
 
                             </div>
                         </div>
+
+
+
+                        <div class="col-sm-6  form-group pull-right" style="margin-bottom: 19px;">
+                            <div class="single-query">
+                                اقل سعر
+                                <input type="number" class="keyword-input" name="price[0]" placeholder="اقل سعر">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6  form-group pull-right" style="margin-bottom: 19px;">
+                            <div class="single-query">
+                                اعلى سعر
+                                <input type="number" class="keyword-input" name="price[1]" placeholder="اعلى سعر">
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-6 pull-right">
+                            <div class="single-query form-group">
+                                اقل المساحه
+                                <input type="number" class="keyword-input" name="area[0]" placeholder="اقل مساحه">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 pull-right">
+                            <div class="single-query form-group">
+                                اكبر المساحه
+                                <input type="number" class="keyword-input" name="area[1]" placeholder="اكبر مساحه">
+                            </div>
+                        </div>
+
                         <div class=" form-group col-md-6 col-sm-12 pull-right">
                             <div class="intro">
                                 النوع
@@ -247,23 +279,6 @@ Real Estate
                                     <option value="sale" class="active">بيع</option>
                                     <option value="rent">ايجار</option>
                                 </select>
-                            </div>
-                        </div>
-
-
-                        <div class="col-sm-6  form-group pull-right" style="margin-bottom: 19px;">
-                            <div class="single-query">
-                                السعر
-                                <input type="number" class="keyword-input" name="price[1]" placeholder="اعلى سعر">
-                            </div>
-                        </div>
-
-
-
-                        <div class="col-sm-6 pull-right">
-                            <div class="single-query form-group">
-                                المساحه
-                                <input type="number" class="keyword-input" name="area[1]" placeholder="اكبر مساحه">
                             </div>
                         </div>
 
