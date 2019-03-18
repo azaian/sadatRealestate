@@ -135,27 +135,26 @@ active
                 <table id="slidertable" class="table display responsive nowrap">
                     <thead>
                         <tr>
-                            <th class="wd-5p" style="width:1%">كود</th>
-                            <th class="wd-5p">الاسم</th>
-                            <th class="wd-5p">العنوان</th>
+                            <th class="wd-10p">كود</th>
+                            <th class="wd-20p">العنوان</th>
                             <th class="wd-5p">الفئه</th>
+                            <th class="wd-10p">الاسم</th>
                             <th class="wd-5p">رقم الهاتف</th>
-                            <th class="wd-5p">ملاحظات</th>
-                            <th class="wd-5p" style="width:20%"></th>
+                            <th class="wd-20p">ملاحظات</th>
+                            <th class="wd-30p" ></th>
                         </tr>
                     </thead>
                     <tbody>
                         @if(isset($realEstates) && count($realEstates)>0 && isset($realEstates[0]->id))
                         @foreach($realEstates as $realEstate)
                         <tr>
-
                             <td>
                                 <input type="checkbox" name="selected_rs" value="{{ $realEstate->id }}">
                                 <a href="{{route('realEstate', $realEstate->id )}}">{{ $realEstate->id }}</a>
                             </td>
-                            <td>{{$realEstate->name}}</td>
                             <td>{{$realEstate->title}}</td>
                             <td>{{$realEstate->category()->name}}</td>
+                            <td>{{$realEstate->name}}</td>
                             <td>{{$realEstate->phone_no}}</td>
                             <td>{{$realEstate->adminnote}}</td>
                             <td>
