@@ -28,7 +28,7 @@
                     </div>
                     <div class="col-md-2 col-xs-6 pull-right">
                         <div class="single-query form-group">
-                            المنطقه
+                            المنطقة
                             <select name="district" class="district" style="margin-bottom:0;">
                                 <option value="">غير محدد</option>
                             </select>
@@ -40,7 +40,7 @@
                                 النوع
                                 <select name="type">
                                     <option class="active" value="sale">بيع</option>
-                                    <option value="rent">اجار</option>
+                                    <option value="rent">إيجار</option>
                                 </select>
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="single-query form-group">
-                                    مساحه
+                                    المساحة
                                     <input type="number" name="area[1]" min="0" class="keyword-input" placeholder=" مساحه">
                                 </div>
                             </div>
@@ -64,7 +64,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="single-query form-group">
-                                    سعر
+السعر
                                     <input type="number" name="price[1]" min="0" class="keyword-input" placeholder=" سعر">
                                 </div>
                             </div>

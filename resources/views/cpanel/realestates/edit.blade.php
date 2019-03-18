@@ -36,14 +36,14 @@ active
 
 
     <div class="pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30">
-        <h4 class="tx-gray-800 mg-b-5">تعديل العقار</h4>
+        <h4 class="tx-gray-800 mg-b-5">اضافه عقار</h4>
     </div>
 
 
     <div class="br-pagebody">
         <div class="br-section-wrapper">
 
-            <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14 mg-b-10">تعديل</h6>
+            <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14 mg-b-10">Real estates</h6>
 
 
             <form class="" action="{{ route('realestates.update',$realEstate->id) }}" method="post" enctype="multipart/form-data">
@@ -52,7 +52,6 @@ active
                 <div class="row mg-b-25">
 
                     <div class="col-lg">
-                        اسم صاحب الاعلان
                         <input class="form-control" placeholder="الاسم" type="text" name="name" @if(isset($realEstate))
                         value="{{$realEstate->name}}"
                         @endif
@@ -63,7 +62,6 @@ active
                 <div class="row mg-b-25">
 
                     <div class="col-lg">
-                        رقم الهاتف
                         <input class="form-control" placeholder="رقم الهاتف" type="text" name="phone_no" @if(isset($realEstate))
                         value="{{$realEstate->phone_no}}"
                         @endif
@@ -73,7 +71,6 @@ active
 
                 <div class="row mg-b-25">
                     <div class="col-lg">
-                        رقم الوتساب
                         <input class="form-control" placeholder="رقم الوتساب" type="text" name="whatsapp_no" @if(isset($realEstate))
                         value="{{$realEstate->whatsapp_no}}"
                         @endif
@@ -83,7 +80,6 @@ active
 
                 <div class="row mg-b-25">
                     <div class="col-lg">
-                        عنوان الاعلان
                         <input class="form-control" placeholder="title" maxlength="50" type="text" name="title" @if(isset($realEstate))
                         value="{{ $realEstate->title }}"
                         @endif
@@ -93,7 +89,6 @@ active
 
                 <div class="row mg-b-25">
                     <div class="col-lg">
-                        الايميل
                         <input class="form-control" placeholder="email" type="email" name="email" @if(isset($realEstate))
                         value="{{ $realEstate->email}}"
                         @endif
@@ -103,7 +98,6 @@ active
 
                 <div class="row mg-b-25">
                     <div class="col-lg">
-                        الحاله
                         <select class="form-control" name="type">
                             <option value="sale" @if ($realEstate->type=="sale")
                             selected="selected"
@@ -118,7 +112,7 @@ active
 
                 <div class="row mg-b-25">
                     <div class="col-lg">
-                        الفئات
+                        categories
                         <select class="form-control cat_id" name="cat_id" required>
                             <option disabled value="غير محدد">غير محدد</option>
                             @foreach ($categories as $category)
@@ -133,7 +127,7 @@ active
 
                 <div class="row mg-b-25">
                     <div class="col-lg">
-                        المناطق
+                        districts
                         <select class="form-control" name="district">
                             <option value="">غير محدد</option>
                             @foreach ($realEstate->category()->categorydistricts() as $district)
@@ -148,7 +142,6 @@ active
 
                 <div class="row mg-b-25">
                     <div class="col-lg">
-                        عنوان العقار
                         <input class="form-control" placeholder="real estate address" type="text" name="rs_address" @if(isset($realEstate->rs_address))
                         value="{{ $realEstate->rs_address }}"
                         @endif
@@ -159,7 +152,6 @@ active
 
                 <div class="row mg-b-25">
                     <div class="col-lg">
-                        المساحه
                         <input class="form-control" placeholder="area" type="number" min="0" name="area" @if(isset($realEstate->area))
                         value="{{ $realEstate->area }}"
                         @endif
@@ -169,7 +161,6 @@ active
 
                 <div class="row mg-b-25">
                     <div class="col-lg">
-                        السعر
                         <input class="form-control" placeholder="price" type="number" min="0" name="price" @if(isset($realEstate->price))
                         value="{{ $realEstate->price }}"
                         @endif
@@ -179,8 +170,7 @@ active
 
                 <div class="row mg-b-25">
                     <div class="col-lg">
-                        قابل للتفاوض
-                        <select class="form-control" name="negotiable">
+                        <select class="form-control" name="negotiable ">
                             <option value=1 @if(isset($realEstate->negotiable))
                                 @if ($realEstate->negotiable==1)
                                 selected="selected"
@@ -199,7 +189,6 @@ active
 
                 <div class="row mg-b-25">
                     <div class="col-lg">
-                        تفاصيل الاعلان
                         <textarea class="form-control" name="details" placeholder="تفاصيل عن الاعلان" rows="8" cols="80" required>@if(isset($realEstate->details)){{ $realEstate->details }}@endif</textarea>
                         <script>
                             CKEDITOR.replace('details' );

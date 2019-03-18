@@ -25,7 +25,8 @@ Home Page
                     </p>
                     <div class="tp-caption  tp-resizeme" data-x="left" data-hoffset="15" data-y="400" data-width="full" data-transform_idle="o:1;" data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;"
                       data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-mask_out="x:0;y:0;s:inherit;e:inherit;" data-start="800">
-                        <a href="{{route('getaboutuspage')}}" class="btn-blue border_radius uppercase active">عن الشركه</a>
+                        <a href="{{route('getaboutuspage')}}" class="btn-blue border_radius uppercase active">عن الشركة
+                        </a>
                         <a href="{{route('getcontactuspage')}}" class="btn-white border_radius uppercase">تواصل معنا</a>
                     </div>
                 </li>
@@ -87,7 +88,7 @@ Home Page
                                 @if ($realEstate->type=='sale')
                                 للبيع
                                 @else
-                                للايجار
+                                للإيجار
                                 @endif
                             </span>
                         </div>
@@ -124,6 +125,7 @@ Home Page
                         <div class="favroute clearfix">
                             <p class="pull-md-right">{{ $realEstate->price }}
                                 @if (isset($realEstate))
+
                                 @if ($realEstate->category()->name== 'مزارع')
                                 جنيه للفدان
                                 @else
@@ -222,7 +224,7 @@ Home Page
                             @if ($lot->type == 'sale')
                             للبيع
                             @else
-                            للايجار
+                            للإيجار
                             @endif
                         </span>
                     </div>
@@ -286,7 +288,8 @@ Home Page
     <div class="container">
         <div class="row">
             <div class="col-sm-12 rtl">
-                <h2 class="uppercase">العقارات الاكثر مشاهده</h2>
+                <h2 class="uppercase">العقارات الاكثر مشاهدة
+                </h2>
                 <p class="heading_space">
                 </p>
             </div>
@@ -305,7 +308,7 @@ Home Page
                             @if ($lot->type == 'sale')
                             للبيع
                             @else
-                            للايجار
+                            للإيجار
                             @endif
                         </span>
                     </div>
@@ -374,7 +377,8 @@ Home Page
     <div class="container">
         <div class="row">
             <div class="col-xs-12 text-center">
-                <h2 class="uppercase">الارء العملاء</h2>
+                <h2 class="uppercase">اراء العملاء
+                </h2>
                 <p class="heading_space"></p>
                 <br>
             </div>
@@ -464,7 +468,8 @@ Home Page
 
             </div>
             <div class="col-sm-5  margin_bottom pull-right">
-                <h2 class="uppercase">نصائح عقاريه </h2>
+                <h2 class="uppercase">نصائح عقارية
+                </h2>
                 <p class="heading_space"></p>
                 @if (isset($advices)&&count($advices)>0)
                 @foreach ($advices as $advice)

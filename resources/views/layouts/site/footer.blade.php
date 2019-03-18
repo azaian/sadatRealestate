@@ -5,7 +5,7 @@
             <div class="col-md-3 col-sm-12 pull-right">
                 <div class="footer_panel bottom30">
                     <a href="" class="logo bottom30"><img src="{{url('site/img/logo.png')}}" alt="logo"></a>
-                    <p class="bottom15">.السادات العقاريه المتحده ... هو أول وأكبر تجمع للعقارات على مستوى مدينة السادات
+                    <p class="bottom15">.السادات العقارية المتحدة... هو أول وأكبر تجمع للعقارات على مستوى مدينة السادات
                         <br> ملكيه الموقع لشركة <span style="display: block;font-size: 16px;font-weight:bold;color:#936e55;">السادات العقاريه المتحده</span>
                     </p>
 

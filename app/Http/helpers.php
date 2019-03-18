@@ -9,7 +9,15 @@ function unique_file($fileName)
     return time() . uniqid().'-'.$fileName;
 }
 
-
+function Sendmailwithaction($message){
+    
+              $subscriber=App\Subscriber::all();
+        if (isset($subscriber) && count($subscriber) > 0) {
+        	   foreach ($subscriber as $onesubscriber) {
+    \Mail::to($onesubscriber->email)->send(new \App\Mail\Sendmail($message));
+        	   }
+        }
+}
 function success()
 {
     return 'success';

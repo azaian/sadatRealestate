@@ -85,7 +85,7 @@
                                 @if (isset($Dataa['categoryForRent']))
                                 <div class="col-menu col-md-6 pull-right rtl">
                                     <div class="row">
-                                        <h5 class="title pull-right">عقارات للايجار</h5>
+                                        <h5 class="title pull-right">عقارات للإيجار</h5>
                                     </div>
                                     <div class="content">
                                         <ul class="menu-col">
@@ -129,20 +129,22 @@
                 </li>
 
                 <li class="dropdown">
-                    <a href="#." class="dropdown-toggle" data-toggle="dropdown">الاخبار و النصائح </a>
+                    <a href="#." class="dropdown-toggle" data-toggle="dropdown">الأخبار و النصائح </a>
                     <ul class="dropdown-menu">
 
                         <li class="dropdown">
-                            <a href="{{ route('getnewspage') }}">الاخبار العقاريه</a>
+                            <a href="{{ route('getnewspage') }}">الأخبار العقارية
+                            </a>
                         </li>
                         <li class="dropdown">
-                            <a href="{{ route('getadvicespage') }}">نصائج عقاريه</a>
+                            <a href="{{ route('getadvicespage') }}">نصائج عقارية</a>
                         </li>
 
                     </ul>
                 </li>
 
-                <li><a href="{{ route('getaboutuspage') }}">عن الشركه</a></li>
+                <li><a href="{{ route('getaboutuspage') }}">عن الشركة
+                </a></li>
                 <li><a href="{{ route('getcontactuspage') }}">تواصل معنا </a></li>
 
             </ul>
@@ -231,7 +233,8 @@
                 <!-- End Header Navigation -->
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav" data-in="fadeIn" data-out="fadeOut">
-                        <li><a href="{{ route('getaboutuspage') }}">عن الشركه</a></li>
+                        <li><a href="{{ route('getaboutuspage') }}">عن الشركة
+                        </a></li>
                         <li><a href="{{ route('getcontactuspage') }}">تواصل معنا </a></li>
 
                     </ul>
